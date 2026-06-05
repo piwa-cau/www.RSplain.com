@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#2C5F2D">
+  <meta name="description" content="IFRSplain - Master IAS 16 Property, Plant and Equipment (PPE) with extremely detailed level-based tutorials. Every term defined before examples, answers discussed separately. No journal entries – pure conceptual mastery.">
+  <title>IFRSplain | IAS 16 PPE Deep Conceptual Hub</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #F7F6F2;
+      color: #1F2A3A;
+      scroll-behavior: smooth;
+      line-height: 1.65;
+    }
+    :root {
+      --primary-dark: #2C5F2D;
+      --primary-light: #97BC62;
+      --accent-gold: #D4AF37;
+      --white: #FFFFFF;
+      --off-white: #FEFCF5;
+      --gray-bg: #F0F2F5;
+      --shadow-sm: 0 12px 30px rgba(0, 0, 0, 0.05);
+      --text-muted: #4A5A6E;
+    }
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 28px; }
+    .navbar {
+      background: var(--white);
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.03);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 2px solid var(--primary-light);
+    }
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      padding: 1rem 28px;
+      max-width: 1320px;
+      margin: 0 auto;
+    }
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--primary-dark) 0%, #3b7a3c 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .logo span { color: var(--accent-gold); background: none; font-weight: 800; }
+    .nav-links { display: flex; gap: 2.2rem; list-style: none; }
+    .nav-links a { text-decoration: none; font-weight: 600; color: #1F2A3A; transition: 0.2s; }
+    .nav-links a:hover { color: var(--primary-dark); }
+    .hamburger { display: none; font-size: 1.8rem; cursor: pointer; background: none; border: none; color: var(--primary-dark); }
+    .btn-primary {
+      background: var(--primary-dark);
+      color: white;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 40px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.25s;
+      display: inline-block;
+      text-decoration: none;
+    }
+    .btn-primary:hover { background: #1e421f; transform: translateY(-2px); }
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--primary-light);
+      color: var(--primary-dark);
+      padding: 10px 24px;
+      border-radius: 40px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.2s;
+      display: inline-block;
+      text-decoration: none;
+    }
+    .btn-outline:hover { background: var(--primary-light); color: white; }
+    section { padding: 80px 0; }
+    .section-title {
+      text-align: center;
+      font-size: 2.3rem;
+      font-weight: 800;
+      color: var(--primary-dark);
+      position: relative;
+    }
+    .section-title:after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 4px;
+      background: var(--accent-gold);
+      margin: 14px auto 0;
+      border-radius: 4px;
+    }
+    .section-sub { text-align: center; max-width: 680px; margin: 0 auto 3rem auto; color: var(--text-muted); }
+    .level-selector { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+    .level-btn {
+      background: white;
+      border: 2px solid var(--primary-light);
+      padding: 12px 28px;
+      border-radius: 60px;
+      font-weight: 700;
+      color: var(--primary-dark);
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .level-btn.active { background: var(--primary-dark); color: white; border-color: var(--primary-dark); box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+    .learning-panel {
+      background: var(--white);
+      border-radius: 48px;
+      padding: 2rem;
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 2rem;
+      border: 1px solid #e6e9f0;
+    }
+    .study-notes {
+      background: var(--off-white);
+      border-radius: 32px;
+      padding: 1.8rem;
+      margin-bottom: 2rem;
+      border-left: 5px solid var(--primary-light);
+    }
+    .detailed-explanations {
+      background: var(--gray-bg);
+      border-radius: 32px;
+      padding: 1.8rem;
+      border-left: 5px solid var(--primary-dark);
+    }
+    .detailed-explanations h4 { color: var(--primary-dark); margin-top: 1.5rem; margin-bottom: 1rem; font-size: 1.3rem; }
+    .detailed-explanations p, .detailed-explanations li { margin-bottom: 1rem; line-height: 1.7; }
+    .pdf-actions { 
+      display: flex; 
+      gap: 1rem; 
+      justify-content: flex-end; 
+      margin-top: 1rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .pdf-note {
+      background: #eef2e0;
+      padding: 8px 16px;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      color: var(--primary-dark);
+      font-weight: 500;
+      margin-right: auto;
+    }
+    .pdf-note i { margin-right: 6px; }
+    .disclaimer-banner {
+      background: #eef2f5;
+      border-left: 6px solid var(--primary-light);
+      padding: 1rem 1.5rem;
+      border-radius: 20px;
+      margin: 1rem 0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      font-size: 0.95rem;
+    }
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 2rem; margin-top: 2rem; }
+    .service-card { background: var(--white); border-radius: 32px; padding: 2rem; text-align: center; border: 1px solid #e2e8f0; transition: 0.2s; }
+    .service-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-sm); }
+    .service-icon { font-size: 2.8rem; color: var(--primary-dark); margin-bottom: 1.2rem; }
+    .contact-wrapper { display: flex; gap: 2rem; flex-wrap: wrap; background: var(--off-white); border-radius: 48px; padding: 2rem; }
+    .gold-icon { color: var(--accent-gold); }
+    .quiz-link-container {
+      margin-top: 2rem;
+      text-align: center;
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; flex-direction: column; width: 100%; background: white; padding: 1.5rem; border-radius: 32px; margin-top: 1rem; }
+      .nav-links.show { display: flex; }
+      .hamburger { display: block; }
+      .section-title { font-size: 1.9rem; }
+      .pdf-actions { flex-direction: column; align-items: stretch; }
+      .pdf-note { margin-right: 0; margin-bottom: 10px; text-align: center; }
+    }
+    @media (min-width: 769px) { .nav-links { display: flex !important; } .hamburger { display: none; } }
+    footer { background: var(--primary-dark); color: #e2f0e2; padding: 2rem 0; text-align: center; }
+    .footer-col { display: flex; justify-content: space-between; flex-wrap: wrap; align-items: center; gap: 1rem; }
+    .socials i { font-size: 1.5rem; margin: 0 0.6rem; color: var(--primary-light); transition: 0.2s; }
+    .socials i:hover { color: white; transform: scale(1.05); }
+    .original-credit { margin-top: 1rem; font-size: 0.8rem; opacity: 0.8; border-top: 1px solid var(--primary-light); padding-top: 1rem; }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="nav-container">
+    <div class="logo">IFRS<span>plain</span></div>
+    <button class="hamburger" id="hamburgerBtn"><i class="fas fa-bars"></i></button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#ias16-hub">IAS 16 Hub</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+  <section id="home" style="padding: 60px 0 40px; background: #fafaf7;">
+    <div class="container" style="display: flex; gap: 2rem; flex-wrap: wrap; align-items: center;">
+      <div style="flex:1">
+        <h1 style="font-size: 3rem; font-weight: 800; color: var(--primary-dark);">Master <span style="color: var(--accent-gold);">IAS 16</span><br>Property, Plant & Equipment</h1>
+        <p style="font-size: 1.1rem; margin: 1rem 0;">Extremely detailed conceptual explanations. Every term is fully defined before any example. Examples are presented separately, and answers are discussed only after all terms are explained. No journal entries – pure conceptual mastery of PPE recognition, measurement, depreciation, revaluation, and derecognition.</p>
+        <div class="disclaimer-banner">
+          <i class="fas fa-graduation-cap"></i>
+          <span><strong>Disclaimer:</strong> I am a <strong>final year Accounting student</strong> offering tutoring based on academic knowledge. This module provides in‑depth understanding of IAS 16 (Property, Plant and Equipment).</span>
+        </div>
+      </div>
+      <div style="flex:0.7; text-align: center;"><i class="fas fa-building" style="font-size: 7rem; color: var(--primary-light); opacity: 0.8;"></i></div>
+    </div>
+  </section>
+
+  <section id="ias16-hub" style="padding-top: 40px;">
+    <div class="container">
+      <h2 class="section-title">📘 IAS 16 – Property, Plant and Equipment (PPE) Deep Conceptual Mastery</h2>
+      <p class="section-sub">Choose your learning level. Each level provides exhaustive term definitions, fully worked examples, and answer discussions after the examples. No journal entries – only deep understanding of recognition, measurement, depreciation, revaluation, and derecognition.</p>
+      <div class="level-selector">
+        <button class="level-btn" data-level="beginner">🌱 Beginner</button>
+        <button class="level-btn active" data-level="intermediate">📚 Intermediate</button>
+        <button class="level-btn" data-level="advanced">🚀 Advanced</button>
+      </div>
+      <div class="learning-panel">
+        <div id="studyNotesContainer" class="study-notes"><h3 style="color: var(--primary-dark);"><i class="fas fa-book-open"></i> Study Notes (Summary)</h3><div id="studyNotesContent">Loading...</div></div>
+        <div id="detailedExplanationsContainer" class="detailed-explanations"><h3 style="color: var(--primary-dark);"><i class="fas fa-chalkboard-teacher"></i> Detailed Explanations & Worked Examples</h3><div id="explanationsContent">Select a level...</div></div>
+        <div class="pdf-actions">
+          <div class="pdf-note"><i class="fas fa-download"></i> <strong>Download PDF for easier understanding</strong> – get all notes & examples in one printable file</div>
+          <button id="downloadPdfBtn" class="btn-outline"><i class="fas fa-file-pdf"></i> Download PDF</button>
+          <button id="printPdfBtn" class="btn-primary"><i class="fas fa-print"></i> Print / Save as PDF</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services"><div class="container"><h2 class="section-title">Accounting & Auditing Expertise</h2><div class="services-grid"><div class="service-card"><i class="fas fa-chart-line service-icon"></i><h3>IAS 16 PPE</h3><p>Recognition, measurement, depreciation, revaluation, derecognition.</p></div><div class="service-card"><i class="fas fa-calculator service-icon"></i><h3>Depreciation Methods</h3><p>Straight‑line, diminishing balance, units of production.</p></div><div class="service-card"><i class="fas fa-chart-simple service-icon"></i><h3>Revaluation & Impairment</h3><p>Fair value model, revaluation surplus, impairment interaction.</p></div></div></div></section>
+
+  <section id="contact"><div class="container"><h2 class="section-title">Want to learn more?<br />Just Ask,<br />its free</h2><div class="contact-wrapper"><div class="contact-info" style="flex:1"><h3><i class="fas fa-chalkboard-user gold-icon"></i> Get 1-on-1 guidance</h3><p>Reach out for personalised IAS 16 tutoring. I will respond within 24 hours.</p><p><i class="fas fa-envelope"></i> tutor@ifrsplain.com</p><p><i class="fas fa-phone-alt"></i> +27 76 123 4567</p></div><div class="contact-form" style="flex:1.5"><form id="contactForm"><input type="text" id="fullName" placeholder="Full name *" style="width:100%; margin-bottom:1rem; padding:12px;"><input type="email" id="emailAddr" placeholder="Email *" style="width:100%; margin-bottom:1rem; padding:12px;"><textarea rows="3" id="messageContent" placeholder="Your PPE questions..." style="width:100%; padding:12px;"></textarea><button type="submit" class="btn-primary" style="margin-top:1rem;">Send Request</button><div id="formStatusMsg"></div></form></div></div></div></section>
+</main>
+<footer>
+  <div class="container footer-col">
+    <div>© <span id="currentYear"></span> IFRSplain — IAS 16 PPE Mastery | Final Year Student Led</div>
+    <div class="socials"><i class="fab fa-instagram"></i><i class="fab fa-twitter"></i><i class="fab fa-facebook"></i></div>
+  </div>
+  <div class="container original-credit">
+    <small>Originally developed by Siphiwe Investment – continuing excellence in accounting education.</small>
+  </div>
+</footer>
+
+<script>
+  // ------------------------------------------------------------------
+  // IAS 16 PPE – EXTREMELY DETAILED CONTENT (Conceptual, no journal entries)
+  // Added quiz link at the end of each level (consistent design)
+  // ------------------------------------------------------------------
+  const quizLinkHtml = `<div class="quiz-link-container"><a href="#" class="btn-outline"><i class="fas fa-question-circle"></i> Test Your Knowledge – Take the Quiz →</a></div>`;
+
+  const contentLibrary = {
+    beginner: {
+      notes: `<h4>🌱 Beginner Level – Core Definitions and Principles of IAS 16</h4>
+              <p><strong>IAS 16 – Property, Plant and Equipment</strong> prescribes the accounting treatment for property, plant and equipment (PPE). PPE are tangible assets that:</p>
+              <ul>
+                <li>are held for use in the production or supply of goods or services, for rental to others, or for administrative purposes; and</li>
+                <li>are expected to be used during more than one period.</li>
+              </ul>
+              <p><strong>Key definitions:</strong></p>
+              <ul>
+                <li><strong>Carrying amount:</strong> The amount at which an asset is recognised after deducting accumulated depreciation and accumulated impairment losses.</li>
+                <li><strong>Cost:</strong> The amount of cash or cash equivalents paid or the fair value of other consideration given to acquire an asset at the time of its acquisition or construction.</li>
+                <li><strong>Depreciation:</strong> The systematic allocation of the depreciable amount of an asset over its useful life.</li>
+                <li><strong>Depreciable amount:</strong> The cost of an asset, or other amount substituted for cost, less its residual value.</li>
+                <li><strong>Residual value:</strong> The estimated amount that an entity would currently obtain from disposal of the asset, after deducting the estimated costs of disposal, if the asset were already of the age and condition expected at the end of its useful life.</li>
+                <li><strong>Useful life:</strong> The period over which an asset is expected to be available for use; or the number of production or similar units expected to be obtained from the asset.</li>
+                <li><strong>Recoverable amount:</strong> The higher of an asset’s fair value less costs to sell and its value in use (from IAS 36).</li>
+              </ul>
+              <p><strong>Recognition criteria:</strong> An item of PPE is recognised as an asset when (a) it is probable that future economic benefits associated with the item will flow to the entity; and (b) the cost of the item can be measured reliably.</p>
+              <p><strong>Initial measurement:</strong> PPE is initially measured at cost. Cost includes purchase price, import duties, non‑refundable taxes, and any directly attributable costs to bring the asset to the location and condition necessary for it to operate (e.g., delivery, installation, professional fees).</p>`,
+      explanations: `<h4>📖 Beginner – Full Explanations of Terms, Then Example, Then Answer Discussion</h4>
+                     <p><strong>Step 1 – Detailed definition of all terms used in the example:</strong><br>
+                     - <strong>Cost:</strong> The total expenditure to acquire the asset and prepare it for use. For a machine, cost includes purchase price, delivery charges, installation, testing, and legal fees.<br>
+                     - <strong>Useful life:</strong> The period over which the asset is expected to generate economic benefits. It may be influenced by technological obsolescence, wear and tear, or legal limits.<br>
+                     - <strong>Residual value:</strong> The estimated scrap or sale value at the end of the asset’s useful life. If residual value is significant, it reduces the depreciable amount.<br>
+                     - <strong>Depreciable amount:</strong> Cost minus residual value. This is the total amount to be allocated as depreciation over the useful life.<br>
+                     - <strong>Straight‑line depreciation method:</strong> Allocates an equal amount of depreciation each year. Formula: (Cost – Residual value) / Useful life.</p>
+                     <p><strong>Step 2 – Present the example clearly (no answer yet):</strong><br>
+                     Example: A company purchases a delivery truck for R200,000. The truck has an estimated useful life of 5 years and an estimated residual value of R20,000. The company uses the straight‑line method of depreciation. Calculate the annual depreciation expense and the carrying amount of the truck at the end of year 3.</p>
+                     <p><strong>Step 3 – Discuss the answer using the terms already explained:</strong><br>
+                     First, determine the depreciable amount: Cost (R200,000) – Residual value (R20,000) = R180,000.<br>
+                     Annual depreciation = Depreciable amount (R180,000) / Useful life (5 years) = R36,000 per year.<br>
+                     Accumulated depreciation after 3 years = R36,000 × 3 = R108,000.<br>
+                     Carrying amount at end of year 3 = Cost (R200,000) – Accumulated depreciation (R108,000) = R92,000.<br>
+                     The carrying amount represents the remaining unallocated cost of the truck. It will be further depreciated over the remaining 2 years (R92,000 – R20,000 residual = R72,000, which is exactly 2 years of R36,000).<br>
+                     <strong>Additional conceptual discussion:</strong> The straight‑line method is the simplest and most common. It assumes that the asset provides equal economic benefits each year. However, other methods (e.g., diminishing balance) may be more appropriate for assets that generate more benefits early in their lives. IAS 16 requires the method to reflect the pattern of consumption of future economic benefits.</p>
+                     <a href="quiz/beg.html" style="color:white;font-size:2.62em;text-decoration:none;padding: 2.5% 37.5% 2.5% 35%;"><button id="printPdfBtn" class="btn-primary" style="color:white;"><i class="fas fa-print"></i> Test your Knowlagde- Take the quiz</button></a>`
+    },
+    intermediate: {
+      notes: `<h4>📘 Intermediate Level – Revaluation Model, Component Depreciation, Derecognition</h4>
+              <p><strong>Revaluation model (IAS 16.31-42):</strong> After recognition, an item of PPE may be carried at a revalued amount – its fair value at the date of revaluation less any subsequent accumulated depreciation and impairment losses. Revaluations must be made with sufficient regularity so that the carrying amount does not differ materially from fair value at the end of the reporting period.</p>
+              <p><strong>Revaluation surplus:</strong> If an asset’s carrying amount is increased as a result of revaluation, the increase is credited directly to other comprehensive income (OCI) and accumulated in equity under a revaluation surplus account. However, if a revaluation increase reverses a previous decrease that was recognised in profit or loss, the increase is first recognised in profit or loss to the extent of the previous decrease.</p>
+              <p><strong>Component depreciation:</strong> IAS 16 requires that each significant part of an item of PPE with a different useful life or pattern of consumption be depreciated separately. For example, an aircraft’s engines and fuselage have different useful lives.</p>
+              <p><strong>Derecognition:</strong> The carrying amount of an item of PPE is removed from the statement of financial position on disposal or when no future economic benefits are expected. Gains or losses on derecognition are recognised in profit or loss (proceeds minus carrying amount).</p>`,
+      explanations: `<h4>📖 Intermediate – Detailed Term Explanations, Then Example, Then Answer Discussion</h4>
+                     <p><strong>Part A – Explanation of all key terms used in the example:</strong><br>
+                     - <strong>Fair value:</strong> The price that would be received to sell an asset in an orderly transaction between market participants (IFRS 13). For PPE, fair value is usually market value for similar assets.<br>
+                     - <strong>Revaluation surplus:</strong> The equity reserve that holds the net increase in carrying amount from revaluations (after tax). It is transferred to retained earnings as the asset is used (e.g., through excess depreciation) or on derecognition.<br>
+                     - <strong>Component depreciation:</strong> When an asset has parts with significantly different useful lives, each part is treated as a separate component. For a building, the roof (shorter life) and the structure (longer life) are depreciated separately. The cost of replacing a component is capitalised, and the old component’s carrying amount is derecognised.<br>
+                     - <strong>Derecognition:</strong> Occurs when an asset is sold, scrapped, or otherwise disposed of. The gain or loss is the difference between net disposal proceeds and the carrying amount at the date of disposal.</p>
+                     <p><strong>Part B – The complete example (stated clearly before any answer):</strong><br>
+                     Example 1 (Revaluation): A building was acquired for R1,000,000, with accumulated depreciation of R200,000. It is revalued to R1,200,000 (fair value). The remaining useful life is 10 years. There was no previous revaluation decrease.<br>
+                     Example 2 (Component depreciation): A manufacturing machine has a main structure (useful life 15 years) and a motor (useful life 5 years). Total cost is R500,000, of which the motor component is R100,000. Residual values are zero.<br>
+                     Example 3 (Derecognition): A vehicle with carrying amount R60,000 is sold for R65,000 cash.</p>
+                     <p><strong>Part C – Answer discussion (step by step, using the terms already explained):</strong><br>
+                     <strong>Example 1 (Revaluation):</strong> The carrying amount before revaluation is R1,000,000 – R200,000 = R800,000. The increase to fair value of R1,200,000 is R400,000. This increase is credited to revaluation surplus (OCI) because there was no previous decrease. The new carrying amount is R1,200,000. Depreciation in the first year after revaluation = R1,200,000 / 10 = R120,000. The excess depreciation (compared to original cost) may be transferred from revaluation surplus to retained earnings, but this is optional and does not affect profit or loss.<br>
+                     <strong>Example 2 (Component depreciation):</strong> The structure component (R400,000) is depreciated over 15 years: R400,000 / 15 = R26,667 per year. The motor component (R100,000) is depreciated over 5 years: R100,000 / 5 = R20,000 per year. Total annual depreciation = R46,667. After 5 years, the motor is fully depreciated and may be replaced. On replacement, the old motor’s carrying amount (zero) is derecognised, and the new motor’s cost is capitalised and depreciated over its own useful life.<br>
+                     <strong>Example 3 (Derecognition):</strong> Gain on disposal = proceeds (R65,000) – carrying amount (R60,000) = R5,000. This gain is recognised in profit or loss as part of other income or other gains. If the asset had been revalued previously, any remaining revaluation surplus related to that asset would be transferred directly to retained earnings (not recycled through profit or loss).</p>
+                     <p><strong>Extended conceptual note:</strong> The revaluation model is optional but provides more relevant information when fair values change significantly. However, it requires regular valuations and can increase volatility in OCI. Component depreciation is often overlooked in practice but is required by IAS 16 to ensure accurate profit measurement. Derecognition ensures that the gain or loss from sale is recognised when it occurs, not later.</p>
+                     <a href="quiz/mid.html" style="color:white;font-size:2.62em;text-decoration:none;padding: 2.5% 37.5% 2.5% 35%;"><button id="printPdfBtn" class="btn-primary" style="color:white;"><i class="fas fa-print"></i> Test your Knowlagde- Take the quiz</button></a>`
+    },
+    advanced: {
+      notes: `<h4>🚀 Advanced Level – Revaluation with Accumulated Depreciation, Impairment Interaction, Deferred Tax, Complex Disposals</h4>
+              <p><strong>Methods of recording revaluation:</strong> IAS 16 allows two methods: (a) elimination method – accumulated depreciation is eliminated against the gross carrying amount, and the net amount is restated to fair value; (b) restatement method – accumulated depreciation is proportionately restated so that the carrying amount equals the revalued amount.</p>
+              <p><strong>Impairment of revalued assets (IAS 36):</strong> If a revalued asset’s recoverable amount falls below its revalued carrying amount, an impairment loss is recognised. The loss first reduces any revaluation surplus for that asset, and any remaining loss is recognised in profit or loss.</p>
+              <p><strong>Deferred tax on revaluation surplus (IAS 12):</strong> Revaluation creates a taxable temporary difference because the tax base remains at historical cost. A deferred tax liability is recognised, with the charge to OCI, reducing the revaluation surplus.</p>
+              <p><strong>Partial disposal of a revalued asset:</strong> When only part of a revalued asset is sold (e.g., selling a portion of land), the carrying amount is allocated proportionately, and any related revaluation surplus is transferred to retained earnings.</p>`,
+      explanations: `<h4>📖 Advanced – Full Term Definitions, Then Example, Then Answer Discussion</h4>
+                     <p><strong>Part A – Detailed explanation of all terms used in advanced examples:</strong><br>
+                     - <strong>Elimination method:</strong> The accumulated depreciation is first written off against the gross carrying amount. Then the net carrying amount is increased or decreased to the revalued amount. This method is simpler and commonly used.<br>
+                     - <strong>Restatement method:</strong> The gross carrying amount is restated proportionately to the change in net carrying amount, with a corresponding adjustment to accumulated depreciation. This method preserves the relationship between gross and accumulated depreciation.<br>
+                     - <strong>Revaluation surplus after tax:</strong> Because deferred tax is recognised on the revaluation surplus, the net surplus (after deferred tax) is reported in equity. The deferred tax liability will reverse over time as the asset is depreciated or sold.<br>
+                     - <strong>Impairment of revalued asset:</strong> The recoverable amount is the higher of fair value less costs to sell and value in use. An impairment loss is first allocated to reduce the revaluation surplus for that asset (to the extent available), then to profit or loss.<br>
+                     - <strong>Partial disposal:</strong> If a piece of land is split and sold, the carrying amount of the sold portion is removed, and any related revaluation surplus (net of deferred tax) is transferred to retained earnings.</p>
+                     <p><strong>Part B – Comprehensive advanced examples (presented fully before answer):</strong><br>
+                     <strong>Example 1 (Elimination method):</strong> An asset has cost R1,000,000, accumulated depreciation R200,000, carrying amount R800,000. It is revalued to R1,200,000. Use the elimination method.<br>
+                     <strong>Example 2 (Deferred tax on revaluation):</strong> A building is revalued upward by R500,000. Tax rate is 28%. The revaluation surplus is recognised in OCI. Calculate the net revaluation surplus after deferred tax.<br>
+                     <strong>Example 3 (Impairment of revalued asset):</strong> After revaluation, an asset has a carrying amount of R1,200,000 and a revaluation surplus of R200,000 (gross, before tax). Its recoverable amount is determined to be R900,000. Calculate the impairment loss allocation.<br>
+                     <strong>Example 4 (Partial disposal):</strong> A revalued piece of land has a carrying amount of R2,000,000 (including revaluation surplus of R400,000 gross). Half of the land is sold for R1,200,000. The tax rate is 28%.</p>
+                     <p><strong>Part C – Answer discussion (using the terms already explained):</strong><br>
+                     <strong>Example 1 (Elimination method):</strong> Step 1: Eliminate accumulated depreciation against cost: Dr Accumulated Depreciation R200,000, Cr Asset Cost R200,000. Now the gross and net are both R800,000. Step 2: Increase the asset’s carrying amount to fair value: Dr Asset R400,000, Cr Revaluation Surplus R400,000. The new carrying amount is R1,200,000. This method clearly shows the elimination of old depreciation.<br>
+                     <strong>Example 2 (Deferred tax on revaluation):</strong> Deferred tax liability = R500,000 × 28% = R140,000. The revaluation surplus credited to OCI is R500,000. Then a debit is made to revaluation surplus for deferred tax: Dr Revaluation Surplus R140,000, Cr Deferred Tax Liability R140,000. The net revaluation surplus reported in equity is R360,000. The deferred tax liability will be released over time as the building is depreciated or sold.<br>
+                     <strong>Example 3 (Impairment of revalued asset):</strong> Impairment loss = Carrying amount (R1,200,000) – Recoverable amount (R900,000) = R300,000. First, allocate against revaluation surplus: R200,000 (the available surplus). The remaining R100,000 is recognised as an impairment loss in profit or loss. After this, the carrying amount becomes R900,000, and the revaluation surplus becomes zero. Any future reversal of impairment would first be recognised in profit or loss up to the amount originally charged, then any excess to revaluation surplus.<br>
+                     <strong>Example 4 (Partial disposal):</strong> The land sold represents 50% of the carrying amount. The carrying amount of the portion sold = R2,000,000 × 50% = R1,000,000. Proceeds = R1,200,000, so gain on sale = R200,000. The revaluation surplus related to that portion = R400,000 × 50% = R200,000 (gross, before tax). The net revaluation surplus after tax = R200,000 × (1 – 28%) = R144,000. This net amount is transferred directly from revaluation surplus to retained earnings (not recycled through profit or loss). The gain of R200,000 is recognised in profit or loss. This ensures that the total equity increase from the sale is correctly reflected.</p>
+                     <p><strong>Advanced conceptual discussion – complex revaluation and impairment interaction:</strong> When both revaluation and impairment are present, careful tracking is required. The revaluation surplus is a reserve that can absorb impairment losses. If a subsequent reversal occurs, the accounting depends on whether the reversal relates to the revaluation surplus or the profit or loss layer. For partial disposals, the revaluation surplus on the portion sold is transferred to retained earnings, representing the realised portion of the surplus. Deferred tax must be considered at every step. These topics are frequently tested in professional exams and require a deep conceptual understanding of IAS 16, IAS 36, and IAS 12 together.</p>
+                     <a href="quiz/ad.html" style="color:white;font-size:2.62em;text-decoration:none;padding: 2.5% 37.5% 2.5% 35%;"><button id="printPdfBtn" class="btn-primary" style="color:white;"><i class="fas fa-print"></i> Test your Knowlagde- Take the quiz</button></a>`
+    }
+  };
+
+  let currentLevel = "intermediate";
+  function renderContent(level) {
+    const data = contentLibrary[level];
+    if (!data) return;
+    document.getElementById("studyNotesContent").innerHTML = data.notes;
+    document.getElementById("explanationsContent").innerHTML = data.explanations;
+  }
+  function downloadCombinedPDF() {
+    const levelTitle = currentLevel.toUpperCase();
+    const notesDiv = document.getElementById("studyNotesContent").cloneNode(true);
+    const explanationsDiv = document.getElementById("explanationsContent").cloneNode(true);
+    const printWindow = window.open('', '_blank');
+    printWindow.document.write(`
+      <html><head><title>IAS16_${currentLevel}_Deep</title>
+      <style>body{font-family:'Inter',sans-serif; padding:2rem; max-width:1000px; margin:0 auto; background:#F7F6F2;} h2{color:#2C5F2D;} .btn-outline{background:transparent; border:2px solid #97BC62; color:#2C5F2D; padding:10px 24px; border-radius:40px; text-decoration:none; display:inline-block;}</style>
+      </head><body><h2>IFRSplain - IAS 16 Property, Plant & Equipment: ${levelTitle} Level (Deep Conceptual Explanations)</h2>
+      <div class="study-notes"><h3>Study Notes</h3>${notesDiv.innerHTML}</div>
+      <div class="detailed-explanations"><h3>Detailed Explanations & Worked Examples</h3>${explanationsDiv.innerHTML}</div>
+      <p><em>Generated from IFRSplain | Final year accounting student tutor | No journal entries, pure conceptual mastery. All terms defined before examples; answers discussed separately.</em></p></body></html>`);
+    printWindow.document.close();
+    printWindow.print();
+  }
+  document.querySelectorAll(".level-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      document.querySelectorAll(".level-btn").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      currentLevel = btn.getAttribute("data-level");
+      renderContent(currentLevel);
+    });
+  });
+  document.getElementById("downloadPdfBtn").addEventListener("click", downloadCombinedPDF);
+  document.getElementById("printPdfBtn").addEventListener("click", downloadCombinedPDF);
+  renderContent("intermediate");
+
+  // Mobile navigation & contact form
+  const hamburger = document.getElementById('hamburgerBtn');
+  const navLinks = document.getElementById('navLinks');
+  if (hamburger && navLinks) {
+    hamburger.addEventListener('click', () => navLinks.classList.toggle('show'));
+    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => navLinks.classList.remove('show')));
+  }
+  document.getElementById('currentYear').innerText = new Date().getFullYear();
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const target = this.getAttribute('href');
+      if (target === "#" || target === "") return;
+      const targetEl = document.querySelector(target);
+      if (targetEl) { e.preventDefault(); targetEl.scrollIntoView({ behavior: 'smooth' }); }
+    });
+  });
+  const contactForm = document.getElementById('contactForm');
+  if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('fullName')?.value || '';
+      const email = document.getElementById('emailAddr')?.value || '';
+      const msg = document.getElementById('messageContent')?.value || '';
+      const statusDiv = document.getElementById('formStatusMsg');
+      if (!name || !email || !msg) { statusDiv.innerHTML = '<span style="color:#b91c1c;">Please fill all fields</span>'; return; }
+      statusDiv.innerHTML = '<span style="color:#15803d;">✅ Request sent! Tutor will reach out within 24 hours.</span>';
+      contactForm.reset();
+      setTimeout(() => statusDiv.innerHTML = '', 4000);
+    });
+  }
+</script>
+</body>
+</html>

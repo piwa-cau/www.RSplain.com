@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>IAS 16 PPE Mastery Quiz | Professional Accounting Assessment</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #eef2f7;
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            line-height: 1.5;
+            padding: 2rem 1rem;
+            color: #1a2c3e;
+        }
+
+        /* Professional business container */
+        .quiz-wrapper {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        /* Header & brand */
+        .brand-bar {
+            background: #0b2b3b;
+            border-radius: 28px 28px 28px 28px;
+            padding: 1.8rem 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.2s;
+        }
+
+        .brand-bar h1 {
+            font-size: 1.9rem;
+            font-weight: 600;
+            letter-spacing: -0.3px;
+            color: #ffffff;
+            margin-bottom: 0.4rem;
+        }
+
+        .brand-bar h1 span {
+            font-weight: 400;
+            background: #2c6e9e;
+            padding: 0.1rem 0.8rem;
+            border-radius: 40px;
+            font-size: 1rem;
+            margin-left: 0.75rem;
+            vertical-align: middle;
+        }
+
+        .brand-bar p {
+            color: #cbdbe6;
+            font-size: 1rem;
+            font-weight: 450;
+            max-width: 90%;
+        }
+
+        /* main quiz card */
+        .quiz-card {
+            background: #ffffff;
+            border-radius: 32px;
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: all 0.2s;
+        }
+
+        .quiz-header {
+            background: #f8fafd;
+            border-bottom: 1px solid #e2edf2;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .quiz-header h2 {
+            font-weight: 600;
+            font-size: 1.3rem;
+            color: #0f2b3a;
+        }
+
+        .question-counter {
+            background: #eef2fa;
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #1e5d7e;
+        }
+
+        /* questions grid layout */
+        .questions-area {
+            padding: 2rem 2rem 1.8rem 2rem;
+            background: #ffffff;
+        }
+
+        .question-item {
+            background: #ffffff;
+            border: 1px solid #e3ecf3;
+            border-radius: 24px;
+            padding: 1.4rem 1.8rem;
+            margin-bottom: 1.8rem;
+            transition: box-shadow 0.2s;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+        }
+
+        .question-item:hover {
+            border-color: #cbdde9;
+            box-shadow: 0 8px 18px -10px rgba(0, 0, 0, 0.08);
+        }
+
+        .q-text {
+            font-weight: 600;
+            font-size: 1.08rem;
+            margin-bottom: 1rem;
+            color: #102b38;
+            display: flex;
+            gap: 0.75rem;
+            align-items: baseline;
+        }
+
+        .q-num {
+            background: #eef2fc;
+            width: 28px;
+            height: 28px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 14px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: #1b6b8f;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.7rem;
+            padding-left: 2.2rem;
+        }
+
+        .option {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            font-size: 0.95rem;
+            cursor: pointer;
+            padding: 0.3rem 0;
+        }
+
+        .option input {
+            width: 18px;
+            height: 18px;
+            accent-color: #1e6f5c;
+            cursor: pointer;
+        }
+
+        .option label {
+            color: #2c4758;
+            font-weight: 450;
+            cursor: pointer;
+            flex: 1;
+        }
+
+        /* result / feedback styles after submit */
+        .result-feedback {
+            margin-top: 1rem;
+            background: #fef8e7;
+            border-left: 5px solid #f4b942;
+            padding: 0.7rem 1rem;
+            border-radius: 14px;
+            font-size: 0.85rem;
+            display: none;
+        }
+
+        .result-feedback.show {
+            display: block;
+        }
+
+        .correct-badge {
+            background: #e1f7ea;
+            color: #156f39;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            display: inline-block;
+            margin-left: 1rem;
+        }
+
+        .wrong-badge {
+            background: #ffe6e5;
+            color: #bc2c1e;
+        }
+
+        /* action buttons */
+        .action-bar {
+            padding: 1.2rem 2rem 2rem 2rem;
+            background: #ffffff;
+            border-top: 1px solid #e9f0f5;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .btn {
+            border: none;
+            font-weight: 600;
+            padding: 0.7rem 1.8rem;
+            border-radius: 60px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: 0.2s;
+            font-family: inherit;
+        }
+
+        .btn-primary {
+            background: #1f6e8c;
+            color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .btn-primary:hover {
+            background: #0e5a75;
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: #eef3f8;
+            color: #2c5a6e;
+            border: 1px solid #cde0ea;
+        }
+
+        .btn-secondary:hover {
+            background: #e2eaf1;
+        }
+
+        .score-card {
+            background: #1e2f3c;
+            padding: 0.4rem 1.2rem;
+            border-radius: 60px;
+            color: white;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .warning-msg {
+            color: #c24a2a;
+            font-size: 0.85rem;
+            background: #fff1ed;
+            padding: 0.5rem 1.2rem;
+            border-radius: 40px;
+        }
+
+        footer {
+            margin-top: 2rem;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #5b7f92;
+        }
+
+        @media (max-width: 720px) {
+            .questions-area {
+                padding: 1.2rem;
+            }
+            .question-item {
+                padding: 1rem;
+            }
+            .options {
+                padding-left: 0.8rem;
+            }
+            .brand-bar h1 {
+                font-size: 1.4rem;
+            }
+            .action-bar {
+                flex-direction: column;
+                align-items: stretch;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="quiz-wrapper">
+    <div class="brand-bar">
+        <h1>IAS 16 · Property, Plant & Equipment <span>Cost Methods & Expense Recognition</span></h1>
+        <p>Professional assessment on PPE recognition, measurement, depreciation models, subsequent expenditure and derecognition — 20 technical questions for accounting & finance professionals.</p>
+    </div>
+    <div class="quiz-card">
+        <div class="quiz-header">
+            <h2>📋 PPE Mastery Exam</h2>
+            <div class="question-counter">✓ 20 questions | multiple choice | IFRS (IAS 16)</div>
+        </div>
+        <div id="quizRoot" class="questions-area">
+            <!-- dynamic quiz will be injected here -->
+        </div>
+        <div class="action-bar">
+            <div>
+                <button id="submitQuizBtn" class="btn btn-primary">✅ Submit assessment</button>
+                <button id="resetQuizBtn" class="btn btn-secondary">⟳ Clear all answers</button>
+            </div>
+            <div id="scoreDisplay" class="score-card">Ready</div>
+        </div>
+        <div id="globalWarning" class="warning-msg" style="margin: 0 2rem 1.5rem 2rem; display: none;"></div>
+    </div>
+    <footer>© Professional Accounting Hub — Based on IAS 16 (PPE). Tests cost model, revaluation, depreciation methods, capitalisation vs expense, component accounting, and disposal impact.</footer>
+</div>
+
+<script>
+    // 20 high-relevance questions based on IAS 16: cost methods, expenses, depreciation, PPE measurement
+    const QUESTIONS = [
+        { text: "Under IAS 16, which of the following costs should be capitalised as part of the initial cost of an item of property, plant and equipment?", options: ["General administrative overheads", "Delivery, handling and installation costs", "Initial operating losses before full production", "Advertising and promotion of new product"], correct: 1, explanation: "Directly attributable costs (delivery, installation, site preparation) are capitalised. Administrative overheads and operating losses are expensed." },
+        { text: "Subsequent expenditure on a major component of PPE is capitalised when:", options: ["It maintains the asset’s originally assessed performance", "It extends the asset’s useful life or improves output beyond original standard", "It is incurred after the asset is fully depreciated", "The expenditure amount is immaterial"], correct: 1, explanation: "Enhancement of future economic benefits beyond original standard (e.g., extended life, increased capacity) meets capitalisation criteria under IAS 16." },
+        { text: "Under the cost model (IAS 16), an item of PPE is subsequently measured at:", options: ["Cost less accumulated depreciation only", "Fair value less any impairment losses", "Cost less accumulated depreciation and accumulated impairment losses", "Revalued amount less depreciation"], correct: 2, explanation: "Cost model: cost minus accumulated depreciation and any accumulated impairment losses (IAS 16.30)." },
+        { text: "Which depreciation method typically results in higher depreciation expense in early years and lower expense in later years?", options: ["Straight-line method", "Units of production method", "Declining balance (reducing balance) method", "Sum-of-the-years'-digits method (but IAS 16 allows only systematic methods)"], correct: 2, explanation: "Declining balance method allocates higher expense in early periods; IAS 16 permits this as an accelerated systematic method." },
+        { text: "A company buys a machine: purchase price $120,000, import duties $8,000, transportation $6,000, installation $4,000, and pre-production testing $2,000. Initial operating losses $10,000. What is the capitalised cost of the machine?", options: ["$150,000", "$140,000", "$130,000", "$120,000"], correct: 1, explanation: "Capitalised cost = 120k + 8k + 6k + 4k + 2k = $140,000. Operating losses are expensed." },
+        { text: "Component depreciation under IAS 16 is required when:", options: ["The asset has a residual value greater than 10%", "Significant parts of an asset have different useful lives or consumption patterns", "Management chooses the revaluation model", "The asset is acquired through a government grant"], correct: 1, explanation: "IAS 16.43 requires separate depreciation for each part with a cost significant relative to total cost and different useful lives." },
+        { text: "Under the revaluation model, an upward revaluation surplus (first revaluation) is generally recognised in:", options: ["Profit or loss immediately", "Other comprehensive income and accumulated in equity under 'revaluation surplus'", "Deferred tax liability directly", "As an adjustment to retained earnings"], correct: 1, explanation: "Revaluation increase is recognised in OCI and credited to revaluation surplus (equity), unless it reverses a previous decrease." },
+        { text: "Which of the following costs related to PPE should be recognised as an expense (not capitalised) in the period incurred?", options: ["Replacement of a complete roof that extends life", "Major periodic inspection costs that meet recognition", "Routine servicing, minor repairs and maintenance", "Installation of a new, more efficient motor"], correct: 2, explanation: "Day-to-day servicing, repairs and maintenance are expensed (IAS 16.12-13). Capitalisation applies only to improvements or replacement of components." },
+        { text: "The depreciable amount of an asset under IAS 16 is defined as:", options: ["Cost less residual value", "Revalued amount", "Cost less accumulated depreciation", "Fair value less costs of disposal"], correct: 0, explanation: "Depreciable amount = cost (or revalued amount) minus residual value (IAS 16.6)." },
+        { text: "An entity disposes of a machine with carrying amount $85,000 and receives proceeds of $72,000. How should the difference be treated?", options: ["Recognise loss of $13,000 in profit or loss", "Recognise loss in other comprehensive income", "Adjust depreciation expense retrospectively", "Capitalise the loss as part of new asset"], correct: 0, explanation: "Gains/losses on disposal = proceeds minus carrying amount; recognised in profit or loss (IAS 16.68)." },
+        { text: "Borrowing costs directly attributable to the construction of a qualifying asset (e.g., a building) under IAS 23 in relation to IAS 16:", options: ["Always expensed as incurred", "Must be capitalised as part of cost of PPE", "Capitalisation is optional if material", "Treated as an impairment indicator"], correct: 1, explanation: "Under IAS 23 (adopted by IAS 16), borrowing costs directly attributable to acquisition/construction of qualifying asset are capitalised." },
+        { text: "Under IAS 16, how often must an entity review the residual value and useful life of an item of PPE?", options: ["Every 3 years", "Only when impairment occurs", "At least annually at each financial year-end", "Only at initial recognition"], correct: 2, explanation: "IAS 16.51 requires review of residual value and useful life at least at each financial year-end." },
+        { text: "Which cost is NOT considered a directly attributable cost to bring PPE to working condition?", options: ["Costs of site preparation", "Professional fees (architects, engineers)", "Costs of introducing a new product, such as advertising campaign", "Delivery and handling costs"], correct: 2, explanation: "Introductory / promotional costs (advertising) are not necessary to bring asset to location/condition; they are expensed." },
+        { text: "An item of PPE is exchanged for a different asset and the transaction has commercial substance. The cost of the new asset should be measured at:", options: ["Carrying amount of the old asset", "Fair value of the asset received (or given up) with gain/loss recognised", "Original cost of the old asset", "The tax base of the new asset"], correct: 1, explanation: "IAS 16.24-26: exchange with commercial substance uses fair value; gain/loss recognised in P&L." },
+        { text: "An asset cost $250,000, residual value $30,000, useful life 8 years. Using straight-line depreciation, annual expense equals:", options: ["$31,250", "$27,500", "$34,375", "$25,000"], correct: 1, explanation: "(250,000 - 30,000) / 8 = $27,500 per year." },
+        { text: "Which of the following would be an indicator that an item of PPE may be impaired (referencing IAS 36 but relevant to IAS 16 measurement)?", options: ["Market value decline more than expected", "Recent major capital expenditure on the asset", "Increase in the asset’s residual value", "Change from cost to revaluation model"], correct: 0, explanation: "A significant decline in market value is an impairment indicator under IAS 36, which affects PPE carrying amount." },
+        { text: "Under the revaluation model, a decrease in carrying amount that reverses a previous revaluation surplus (on the same asset) should be recognised:", options: ["Immediately in profit or loss", "In OCI to the extent of the credit balance in revaluation surplus, remainder in P&L", "Directly to retained earnings", "As a liability"], correct: 1, explanation: "IAS 16.40: revaluation decrease first offsets existing surplus in equity; any excess recognised in profit or loss." },
+        { text: "Which statement about derecognition of PPE is correct according to IAS 16?", options: ["Gain or loss on disposal is presented as part of revenue", "Derecognition occurs when no future economic benefits are expected, and gain/loss goes to P&L", "Derecognition is optional for fully depreciated assets", "Revaluation surplus upon disposal is transferred directly to retained earnings, but gain/loss is included in OCI"], correct: 1, explanation: "IAS 16.67-69: derecognise on disposal or when no future benefits; gain/loss recognised in P&L. Revaluation surplus may be transferred to retained earnings." },
+        { text: "The policy choice between cost model and revaluation model (IAS 16) applies at which level?", options: ["Each individual asset", "Entire class of PPE (e.g., buildings, machinery)", "Only for land & buildings", "On entity-wide basis, no flexibility"], correct: 1, explanation: "IAS 16.29: an entity shall choose either cost or revaluation model as its accounting policy for an entire class of property, plant and equipment." },
+        { text: "An initial estimate of costs to dismantle and remove an item of PPE and restore the site (dismantling obligation) should be:", options: ["Expensed immediately as incurred", "Capitalised as part of cost of the asset and depreciated", "Recognised as a provision without affecting asset cost", "Disclosed only in notes"], correct: 1, explanation: "IAS 16.16(c) and IAS 37: initial estimate of dismantling/restoration costs is added to asset cost and depreciated over useful life." }
+    ];
+
+    // Guarantee 20 questions
+    if (QUESTIONS.length !== 20) console.warn("Inconsistent length"); // but we have 20
+
+    let userSelections = new Array(20).fill(null); // stores option index selected (0-3) or null
+    let quizSubmitted = false;   // flag to prevent re-score modifications
+    let currentScore = null;
+
+    const quizRoot = document.getElementById('quizRoot');
+    const submitBtn = document.getElementById('submitQuizBtn');
+    const resetBtn = document.getElementById('resetQuizBtn');
+    const scoreDisplaySpan = document.getElementById('scoreDisplay');
+    const globalWarningDiv = document.getElementById('globalWarning');
+
+    // Render the entire quiz dynamically
+    function renderQuiz() {
+        quizRoot.innerHTML = '';
+        QUESTIONS.forEach((q, idx) => {
+            const questionDiv = document.createElement('div');
+            questionDiv.className = 'question-item';
+            questionDiv.dataset.qIndex = idx;
+
+            // question header
+            const qHeader = document.createElement('div');
+            qHeader.className = 'q-text';
+            qHeader.innerHTML = `<span class="q-num">${idx+1}</span><span>${q.text}</span>`;
+            questionDiv.appendChild(qHeader);
+
+            const optionsDiv = document.createElement('div');
+            optionsDiv.className = 'options';
+            const nameAttr = `q_${idx}`;
+            // store current selected value if any
+            const savedSelection = userSelections[idx];
+
+            q.options.forEach((opt, optIndex) => {
+                const radioId = `opt_${idx}_${optIndex}`;
+                const optionWrapper = document.createElement('div');
+                optionWrapper.className = 'option';
+                const radio = document.createElement('input');
+                radio.type = 'radio';
+                radio.name = nameAttr;
+                radio.value = optIndex;
+                radio.id = radioId;
+                if (savedSelection === optIndex) radio.checked = true;
+                radio.addEventListener('change', (e) => {
+                    if (quizSubmitted) {
+                        // if quiz already submitted we prevent changes or optionally re-evaluate? better to disable but we'll show warning to reset
+                        e.target.checked = false;
+                        showTemporaryWarning("Please reset the quiz before changing answers after submission.");
+                        return;
+                    }
+                    userSelections[idx] = parseInt(e.target.value);
+                    updateScoreUI(); // not final but we don't show score until submit, but we can re-render feedback area if exists? Not needed
+                    // Hide any previous per-question feedback when user changes
+                    const existingFeedback = questionDiv.querySelector('.result-feedback');
+                    if (existingFeedback) existingFeedback.classList.remove('show');
+                });
+                const label = document.createElement('label');
+                label.htmlFor = radioId;
+                label.textContent = `${String.fromCharCode(65+optIndex)}. ${opt}`;
+                optionWrapper.appendChild(radio);
+                optionWrapper.appendChild(label);
+                optionsDiv.appendChild(optionWrapper);
+            });
+            questionDiv.appendChild(optionsDiv);
+
+            // Feedback container (for after submit)
+            const feedbackDiv = document.createElement('div');
+            feedbackDiv.className = 'result-feedback';
+            feedbackDiv.id = `fb_${idx}`;
+            questionDiv.appendChild(feedbackDiv);
+
+            quizRoot.appendChild(questionDiv);
+        });
+    }
+
+    function showTemporaryWarning(msg) {
+        globalWarningDiv.style.display = 'block';
+        globalWarningDiv.textContent = msg;
+        setTimeout(() => {
+            globalWarningDiv.style.display = 'none';
+        }, 2500);
+    }
+
+    // update score UI after submit action
+    function computeAndDisplayResults() {
+        // verify all questions have answers
+        let unanswered = [];
+        for (let i = 0; i < userSelections.length; i++) {
+            if (userSelections[i] === null) unanswered.push(i+1);
+        }
+        if (unanswered.length > 0) {
+            const msg = `❗ Please answer all questions before submitting. Unanswered: ${unanswered.join(', ')}`;
+            globalWarningDiv.style.display = 'block';
+            globalWarningDiv.textContent = msg;
+            setTimeout(() => {
+                globalWarningDiv.style.display = 'none';
+            }, 3000);
+            return false;
+        }
+        globalWarningDiv.style.display = 'none';
+        let correctCount = 0;
+        for (let i = 0; i < QUESTIONS.length; i++) {
+            const selected = userSelections[i];
+            const isCorrect = (selected === QUESTIONS[i].correct);
+            if (isCorrect) correctCount++;
+            // show feedback per question
+            const feedbackDiv = document.getElementById(`fb_${i}`);
+            if (feedbackDiv) {
+                const correctAnswerLetter = String.fromCharCode(65 + QUESTIONS[i].correct);
+                const correctAnswerText = QUESTIONS[i].options[QUESTIONS[i].correct];
+                const userChoiceText = (selected !== null) ? QUESTIONS[i].options[selected] : "No answer";
+                const isCorrectFlag = isCorrect;
+                feedbackDiv.innerHTML = `
+                    <strong>${isCorrectFlag ? '✓ Correct' : '✗ Incorrect'}</strong> · 
+                    Your answer: ${userChoiceText}<br>
+                    <strong>Correct answer:</strong> ${correctAnswerLetter}. ${correctAnswerText}<br>
+                    <em>${QUESTIONS[i].explanation}</em>
+                `;
+                feedbackDiv.classList.add('show');
+                // style border
+                const parentDiv = document.getElementById(`fb_${i}`).closest('.question-item');
+                if (parentDiv) {
+                    if (isCorrectFlag) {
+                        parentDiv.style.borderLeft = '4px solid #2c9a6e';
+                    } else {
+                        parentDiv.style.borderLeft = '4px solid #da6b4a';
+                    }
+                }
+            }
+        }
+        const scorePercent = (correctCount / 20) * 100;
+        scoreDisplaySpan.innerHTML = `🎯 Score: ${correctCount}/20 (${Math.round(scorePercent)}%) · ${getPerformanceMessage(scorePercent)}`;
+        currentScore = correctCount;
+        quizSubmitted = true;
+        return true;
+    }
+
+    function getPerformanceMessage(percent) {
+        if (percent >= 90) return "Excellent · Expert level";
+        if (percent >= 75) return "Proficient · Strong knowledge";
+        if (percent >= 60) return "Satisfactory · Review key concepts";
+        return "Needs improvement · Study IAS 16 thoroughly";
+    }
+
+    function updateScoreUI() {
+        if (!quizSubmitted) {
+            const answeredCount = userSelections.filter(v => v !== null).length;
+            scoreDisplaySpan.innerHTML = `📋 ${answeredCount}/20 answered · Ready to submit`;
+        } else {
+            // after submission keep displaying last score; will recompute only on reset
+        }
+    }
+
+    function resetQuiz(keepSubmittedFlag = false) {
+        // reset all selections
+        for (let i = 0; i < userSelections.length; i++) {
+            userSelections[i] = null;
+        }
+        quizSubmitted = false;
+        currentScore = null;
+        // remove all feedbacks & resets border style and checked radios
+        for (let i = 0; i < QUESTIONS.length; i++) {
+            const feedbackDiv = document.getElementById(`fb_${i}`);
+            if (feedbackDiv) {
+                feedbackDiv.classList.remove('show');
+                feedbackDiv.innerHTML = '';
+            }
+            const questionItem = document.querySelector(`.question-item[data-qIndex="${i}"]`);
+            if (questionItem) {
+                questionItem.style.borderLeft = '';
+            }
+            // clear radio selections
+            const radios = document.querySelectorAll(`input[name="q_${i}"]`);
+            radios.forEach(radio => radio.checked = false);
+        }
+        // reset selections array
+        userSelections.fill(null);
+        updateScoreUI();
+        scoreDisplaySpan.innerHTML = "📋 Ready · 0/20 answered";
+        globalWarningDiv.style.display = 'none';
+    }
+
+    // event listeners
+    submitBtn.addEventListener('click', () => {
+        computeAndDisplayResults();
+    });
+
+    resetBtn.addEventListener('click', () => {
+        if (quizSubmitted) {
+            resetQuiz();
+        } else {
+            // manual reset: clear all
+            resetQuiz();
+        }
+        // also remove any border style from questions after reset
+        for (let i = 0; i < QUESTIONS.length; i++) {
+            const qItem = document.querySelector(`.question-item[data-qIndex="${i}"]`);
+            if (qItem) qItem.style.borderLeft = '';
+        }
+    });
+
+    // initial render & update answer tracking from dynamic radios
+    renderQuiz();
+
+    // re-sync userSelections based on initial check (none initially)
+    // add event listeners additionally to capture existing radio changes from dynamic updates, but each radio already has change handler
+    // additional sync for initial loading of any pre-existing? none
+
+    // also maintain answered count based on changes
+    function syncAnsweredCount() {
+        if (!quizSubmitted) {
+            const answered = userSelections.filter(v => v !== null).length;
+            scoreDisplaySpan.innerHTML = `📋 ${answered}/20 answered · Ready to submit`;
+        }
+    }
+
+    // override change handler for all future radios but not double, can call sync from each question handler? we can add a global listener
+    document.addEventListener('change', (e) => {
+        if (e.target && e.target.type === 'radio' && e.target.name && e.target.name.startsWith('q_')) {
+            if (!quizSubmitted) {
+                const nameParts = e.target.name.split('_');
+                const idx = parseInt(nameParts[1]);
+                if (!isNaN(idx)) {
+                    const selectedVal = parseInt(e.target.value);
+                    userSelections[idx] = selectedVal;
+                    syncAnsweredCount();
+                    // hide feedback if visible after new selection
+                    const fbDiv = document.getElementById(`fb_${idx}`);
+                    if (fbDiv) fbDiv.classList.remove('show');
+                    const qItem = document.querySelector(`.question-item[data-qIndex="${idx}"]`);
+                    if (qItem) qItem.style.borderLeft = '';
+                }
+            } else {
+                // if quiz submitted, prevent changes by unchecking
+                e.target.checked = false;
+                showTemporaryWarning("Assessment already submitted. Press 'Clear all answers' to retake quiz.");
+            }
+        }
+    });
+
+    // initial sync counter
+    syncAnsweredCount();
+</script>
+</body>
+</html>

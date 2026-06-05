@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>AIS Pro | Cost Methods Mastery Quiz</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f0f4f8;
+            font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
+            line-height: 1.5;
+            color: #1e2a3a;
+            padding: 2rem 1.5rem;
+        }
+
+        /* professional business container */
+        .quiz-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 28px;
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.02);
+            overflow: hidden;
+            transition: all 0.2s ease;
+        }
+
+        /* header area */
+        .quiz-header {
+            background: linear-gradient(135deg, #0b2b40 0%, #123a4a 100%);
+            padding: 2rem 2.5rem;
+            color: white;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .quiz-header h1 {
+            font-size: 1.9rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .quiz-header h1::before {
+            content: "📊";
+            font-size: 2rem;
+            font-weight: normal;
+        }
+
+        .badge {
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(4px);
+            display: inline-block;
+            padding: 0.25rem 0.9rem;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-top: 0.6rem;
+        }
+
+        .quiz-header p {
+            opacity: 0.85;
+            margin-top: 0.75rem;
+            font-size: 1rem;
+            border-left: 3px solid #4c9fcf;
+            padding-left: 1rem;
+        }
+
+        /* progress + stats bar */
+        .stats-bar {
+            background: #f9fbfd;
+            padding: 0.9rem 2.5rem;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #e4e9f0;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #2c4c6e;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .stats-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .stats-icon {
+            font-size: 1.2rem;
+        }
+
+        /* questions list */
+        .questions-area {
+            padding: 2rem 2.5rem;
+        }
+
+        .question-card {
+            background: #ffffff;
+            border: 1px solid #e9edf2;
+            border-radius: 24px;
+            padding: 1.6rem 1.8rem;
+            margin-bottom: 1.8rem;
+            transition: box-shadow 0.2s, border-color 0.2s;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+        }
+
+        .question-card:hover {
+            border-color: #cbdbe0;
+            box-shadow: 0 8px 20px -12px rgba(0, 32, 64, 0.12);
+        }
+
+        .q-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 1.2rem;
+            color: #0f2f3f;
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .q-num {
+            background: #eef3fa;
+            color: #1f6392;
+            font-weight: 700;
+            font-size: 0.8rem;
+            width: 28px;
+            height: 28px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 20px;
+        }
+
+        .question-text {
+            font-weight: 500;
+            color: #1e3a4d;
+            flex: 1;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            margin-top: 0.5rem;
+            padding-left: 0.4rem;
+        }
+
+        .option {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 0.6rem 0.8rem;
+            border-radius: 14px;
+            background: #fefefe;
+            transition: background 0.15s;
+            cursor: pointer;
+            border: 1px solid transparent;
+        }
+
+        .option:hover {
+            background: #f6f9fe;
+            border-color: #dce5ef;
+        }
+
+        input[type="radio"] {
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border: 2px solid #b9c8e0;
+            border-radius: 50%;
+            margin: 0;
+            position: relative;
+            cursor: pointer;
+            transition: 0.1s;
+        }
+
+        input[type="radio"]:checked {
+            border-color: #1f7b4d;
+            background-color: #1f7b4d;
+            box-shadow: inset 0 0 0 3px white;
+        }
+
+        .option label {
+            font-size: 0.95rem;
+            font-weight: 450;
+            color: #1f3b4c;
+            flex: 1;
+            cursor: pointer;
+        }
+
+        /* action buttons */
+        .action-bar {
+            padding: 1.2rem 2.5rem 2rem 2.5rem;
+            background: #ffffff;
+            border-top: 1px solid #eef2f7;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .btn {
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: 0.2s all;
+            font-family: inherit;
+            background: white;
+            border: 1px solid #cbdae9;
+            color: #2c5a7a;
+        }
+
+        .btn-primary {
+            background: #1c6d4a;
+            border: none;
+            color: white;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+
+        .btn-primary:hover {
+            background: #0f5a3c;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 14px rgba(28,109,74,0.2);
+        }
+
+        .btn-secondary {
+            background: #f1f5f9;
+            border-color: #d4dfea;
+        }
+
+        .btn-secondary:hover {
+            background: #e6edf4;
+            border-color: #b9cbdf;
+        }
+
+        .results-panel {
+            background: #f9fefb;
+            border-top: 1px solid #e0ecf5;
+            padding: 1.8rem 2.5rem;
+            margin-top: 0;
+            border-radius: 0 0 28px 28px;
+            transition: all 0.25s;
+        }
+
+        .score-summary {
+            background: #eef4ea;
+            padding: 1.2rem 1.8rem;
+            border-radius: 24px;
+            margin-bottom: 1.8rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .score-number {
+            font-size: 2.4rem;
+            font-weight: 800;
+            color: #1e6b48;
+            letter-spacing: -0.02em;
+        }
+
+        .detail-list {
+            max-height: 380px;
+            overflow-y: auto;
+            font-size: 0.85rem;
+            border-radius: 20px;
+        }
+
+        .detail-item {
+            background: white;
+            padding: 0.9rem 1.2rem;
+            margin-bottom: 0.6rem;
+            border-radius: 18px;
+            border-left: 4px solid #cfddee;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+        }
+
+        .detail-correct {
+            border-left-color: #2c9c6e;
+            background: #fafefc;
+        }
+
+        .detail-wrong {
+            border-left-color: #dc7a6b;
+            background: #fff9f8;
+        }
+
+        .status-badge {
+            font-weight: 600;
+            font-size: 0.7rem;
+            padding: 0.2rem 0.7rem;
+            border-radius: 30px;
+            background: #eef2f5;
+            display: inline-block;
+        }
+
+        .correct-badge {
+            background: #e1f7e9;
+            color: #1f6e48;
+        }
+
+        .wrong-badge {
+            background: #ffe5e1;
+            color: #bc4e3b;
+        }
+
+        hr {
+            margin: 1rem 0;
+            border: 0;
+            height: 1px;
+            background: linear-gradient(to right, #e0e8f0, transparent);
+        }
+
+        footer {
+            text-align: center;
+            font-size: 0.75rem;
+            padding: 1.2rem;
+            color: #6e8aaa;
+            border-top: 1px solid #eef2f8;
+        }
+
+        @media (max-width: 700px) {
+            .quiz-header, .questions-area, .action-bar, .results-panel {
+                padding-left: 1.2rem;
+                padding-right: 1.2rem;
+            }
+            .question-card {
+                padding: 1.2rem;
+            }
+            .btn {
+                padding: 0.6rem 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="quiz-container" id="quizApp">
+    <div class="quiz-header">
+        <h1>Cost Methods & AIS Proficiency</h1>
+        <div class="badge">📐 16 core cost methods • 20 expert questions</div>
+        <p>Assess your expertise in Activity-Based Costing, Job/Process systems, Standard Costing, Throughput, Target, Life-Cycle & advanced inventory methods — professional accounting benchmark.</p>
+    </div>
+    <div class="stats-bar">
+        <div class="stats-item"><span class="stats-icon">📋</span> 20 comprehensive questions</div>
+        <div class="stats-item"><span class="stats-icon">⚖️</span> Covers 16+ costing methodologies</div>
+        <div class="stats-item"><span class="stats-icon">🏢</span> Business & AIS context</div>
+    </div>
+    <div id="questionsContainer" class="questions-area"></div>
+    <div class="action-bar">
+        <button class="btn btn-secondary" id="resetQuizBtn">⟳ Reset all answers</button>
+        <button class="btn btn-primary" id="submitQuizBtn">✔ Submit & evaluate</button>
+    </div>
+    <div id="resultsPanel" class="results-panel" style="display: none;"></div>
+    <footer>© AIS Professional Assessment — authoritative cost accounting framework | benchmark your knowledge</footer>
+</div>
+
+<script>
+    // ----- 20 PROFESSIONAL QUESTIONS covering AIS cost methods (16+ distinct methods) -----
+    const QUESTIONS = [
+        { text: "Which costing method assigns overhead costs using multiple cost pools and activity drivers, providing more accurate product costing?", options: ["Job Order Costing", "Process Costing", "Activity-Based Costing (ABC)", "Standard Costing"], correct: 2 },
+        { text: "During periods of rising prices, which inventory cost flow assumption yields the highest ending inventory value?", options: ["FIFO", "LIFO", "Weighted Average", "Specific Identification"], correct: 0 },
+        { text: "What cost accumulation method is most appropriate for firms producing unique, custom-made products (e.g., yachts, auditoriums)?", options: ["Job Order Costing", "Process Costing", "Batch Costing", "Operation Costing"], correct: 0 },
+        { text: "Equivalent units of production are a fundamental concept in which costing system typically used for homogeneous mass production?", options: ["Job Order Costing", "Process Costing", "Contract Costing", "Backflush Costing"], correct: 1 },
+        { text: "Which costing method includes BOTH variable and fixed manufacturing costs as inventoriable product costs (required for external GAAP reporting)?", options: ["Variable Costing", "Absorption Costing", "Direct Costing", "Throughput Costing"], correct: 1 },
+        { text: "The cost management approach that sets target costs based on market price and desired profit, focusing on design-stage cost reduction, is called:", options: ["Kaizen Costing", "Target Costing", "Life-Cycle Costing", "Standard Costing"], correct: 1 },
+        { text: "Backflush costing is most suitable for which production environment, where few inventories exist and costs are recorded after completion?", options: ["Job shops", "Just-In-Time (JIT) manufacturing", "Custom projects", "Service firms"], correct: 1 },
+        { text: "In standard costing, the difference between actual labor hours × standard rate and standard hours allowed × standard rate is known as:", options: ["Labor rate variance", "Material price variance", "Labor efficiency variance", "Volume variance"], correct: 2 },
+        { text: "Which costing method uses actual direct material and direct labor costs, but applies manufacturing overhead using a predetermined rate based on normal capacity?", options: ["Actual Costing", "Normal Costing", "Standard Costing", "Absorption Costing"], correct: 1 },
+        { text: "Throughput costing (super-variable costing) treats only one element as a product cost. Which one?", options: ["Direct materials only", "Direct labor only", "All variable costs", "All manufacturing costs"], correct: 0 },
+        { text: "Batch costing is predominantly used in industries that produce:", options: ["Identical continuous units", "Single unique projects", "Similar products in definable batches", "Intangible services"], correct: 2 },
+        { text: "Life-cycle costing emphasizes costs incurred throughout the entire product life, from R&D to disposal. This method supports:", options: ["Manufacturing control only", "Design stage decisions only", "Strategic planning across cradle-to-grave", "Post-sales warranty only"], correct: 2 },
+        { text: "Operation costing is a hybrid system that combines features of job order and process costing; it is often used in:", options: ["Oil refineries", "Apparel & footwear manufacturing", "Custom legal services", "Construction contracts"], correct: 1 },
+        { text: "Which internal reporting method focuses on contribution margin and separates variable costs from fixed costs for break-even analysis?", options: ["Absorption Costing", "Variable (Marginal) Costing", "Full Costing", "Activity-Based Costing"], correct: 1 },
+        { text: "In a period of falling prices (deflation), which inventory costing method typically produces the highest net income?", options: ["FIFO", "LIFO", "Weighted Average", "Specific Identification"], correct: 1 },
+        { text: "The formula for predetermined overhead rate is based on:", options: ["Actual overhead / actual activity", "Actual overhead / estimated activity", "Estimated overhead / estimated activity base", "Estimated overhead / actual activity"], correct: 2 },
+        { text: "Kaizen costing focuses on continuous incremental cost reduction during:", options: ["The manufacturing phase", "The product design stage", "The product retirement stage", "Target price setting"], correct: 0 },
+        { text: "Joint costing is required to allocate shared costs to two or more products produced from a common input. Which statement applies?", options: ["Only allocate to by-products", "Allocate costs only to separable products", "Allocate to main products and by-products from a joint process", "No allocation needed for financial reporting"], correct: 2 },
+        { text: "Which costing method is ideal for decision-making related to make-or-buy and special orders because it isolates relevant variable costs?", options: ["Absorption Costing", "Throughput Costing", "Variable Costing", "Normal Costing"], correct: 2 },
+        { text: "The variance that arises due to the difference between actual fixed overhead incurred and budgeted fixed overhead is called:", options: ["Spending variance", "Efficiency variance", "Volume variance", "Rate variance"], correct: 0 }
+    ];
+
+    // verify correct count: 20 questions
+    console.assert(QUESTIONS.length === 20, "Must have 20 questions");
+
+    let userSelections = new Array(20).fill(null);    // stores selected option index (0-3) or null
+    let quizSubmitted = false;
+
+    // Helper: render all questions from the array
+    function renderQuestions() {
+        const container = document.getElementById('questionsContainer');
+        if (!container) return;
+        container.innerHTML = '';
+        QUESTIONS.forEach((q, idx) => {
+            const questionDiv = document.createElement('div');
+            questionDiv.className = 'question-card';
+            questionDiv.dataset.qIndex = idx;
+
+            // title area
+            const titleDiv = document.createElement('div');
+            titleDiv.className = 'q-title';
+            titleDiv.innerHTML = `<span class="q-num">${idx+1}</span><span class="question-text">${escapeHtml(q.text)}</span>`;
+            questionDiv.appendChild(titleDiv);
+
+            const optionsDiv = document.createElement('div');
+            optionsDiv.className = 'options';
+            const groupName = `q_${idx}`;
+
+            q.options.forEach((opt, optIdx) => {
+                const optionWrapper = document.createElement('div');
+                optionWrapper.className = 'option';
+                const radioId = `${groupName}_opt${optIdx}`;
+                const radio = document.createElement('input');
+                radio.type = 'radio';
+                radio.name = groupName;
+                radio.value = optIdx;
+                radio.id = radioId;
+                // pre-select if userSelections already has value
+                if (userSelections[idx] === optIdx) {
+                    radio.checked = true;
+                }
+                radio.addEventListener('change', (e) => {
+                    if (e.target.checked) {
+                        userSelections[idx] = optIdx;
+                    }
+                });
+                const label = document.createElement('label');
+                label.htmlFor = radioId;
+                label.textContent = `${String.fromCharCode(65+optIdx)}. ${escapeHtml(opt)}`;
+                optionWrapper.appendChild(radio);
+                optionWrapper.appendChild(label);
+                optionsDiv.appendChild(optionWrapper);
+            });
+            questionDiv.appendChild(optionsDiv);
+            container.appendChild(questionDiv);
+        });
+    }
+
+    // reset all selections and UI + hide results
+    function resetQuiz() {
+        userSelections = new Array(20).fill(null);
+        quizSubmitted = false;
+        // re-render fresh to reset radio groups
+        renderQuestions();
+        const resultsPanel = document.getElementById('resultsPanel');
+        if (resultsPanel) resultsPanel.style.display = 'none';
+        // optional smooth scroll top
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // compute score and detailed report
+    function evaluateQuiz() {
+        let score = 0;
+        const details = [];
+        for (let i = 0; i < QUESTIONS.length; i++) {
+            const selected = userSelections[i];
+            const isCorrect = (selected !== null && selected === QUESTIONS[i].correct);
+            if (isCorrect) score++;
+            let userAnswerText = (selected !== null) ? QUESTIONS[i].options[selected] : "No answer";
+            let correctAnswerText = QUESTIONS[i].options[QUESTIONS[i].correct];
+            details.push({
+                questionNum: i+1,
+                questionText: QUESTIONS[i].text,
+                userAnswer: userAnswerText,
+                correctAnswer: correctAnswerText,
+                isCorrect: isCorrect,
+                selectedIndex: selected
+            });
+        }
+        return { score, total: QUESTIONS.length, details };
+    }
+
+    // show professional results panel with detailed breakdown
+    function displayResults() {
+        const { score, total, details } = evaluateQuiz();
+        const percent = Math.round((score / total) * 100);
+        const resultsPanel = document.getElementById('resultsPanel');
+        if (!resultsPanel) return;
+
+        let resultsHtml = `
+            <div class="score-summary">
+                <div><strong>📈 Performance Summary</strong><br><span style="font-size:0.9rem;">Cost Methods Proficiency</span></div>
+                <div><span class="score-number">${score} / ${total}</span><span style="font-size:1rem; margin-left:6px;"> (${percent}%)</span></div>
+                <div>${getPerformanceMessage(percent)}</div>
+            </div>
+            <div style="font-weight:500; margin-bottom:12px;">🔍 Detailed answer review</div>
+            <div class="detail-list">
+        `;
+
+        details.forEach(detail => {
+            const statusClass = detail.isCorrect ? "detail-correct" : "detail-wrong";
+            const badgeClass = detail.isCorrect ? "correct-badge" : "wrong-badge";
+            const badgeText = detail.isCorrect ? "✓ Correct" : "✗ Incorrect";
+            resultsHtml += `
+                <div class="detail-item ${statusClass}">
+                    <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-bottom: 8px;">
+                        <strong style="font-size:0.85rem;">Q${detail.questionNum}</strong>
+                        <span class="status-badge ${badgeClass}">${badgeText}</span>
+                    </div>
+                    <div style="font-size:0.88rem; margin-bottom: 8px; color:#1f3b4c;">${escapeHtml(detail.questionText)}</div>
+                    <div style="font-size:0.8rem; margin-top: 5px;"><span style="font-weight:500;">Your answer:</span> ${escapeHtml(detail.userAnswer)}</div>
+                    <div style="font-size:0.8rem;"><span style="font-weight:500; color:#1f6e48;">Correct answer:</span> ${escapeHtml(detail.correctAnswer)}</div>
+                </div>
+            `;
+        });
+        resultsHtml += `</div><hr><div style="font-size:0.8rem; text-align:right; color:#5f7d9c;">* Unanswered questions are counted as incorrect. Use 'Reset all answers' to retry.</div>`;
+        resultsPanel.innerHTML = resultsHtml;
+        resultsPanel.style.display = 'block';
+        quizSubmitted = true;
+        // scroll to results
+        resultsPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    function getPerformanceMessage(percent) {
+        if (percent >= 90) return "🏆 Expert - Mastery in AIS cost methods";
+        if (percent >= 75) return "🌟 Advanced - Strong command of costing frameworks";
+        if (percent >= 60) return "📘 Proficient - Good understanding, room to sharpen";
+        if (percent >= 40) return "📌 Intermediate - Review activity-based & standard costing";
+        return "📚 Developing - Recommended study on core cost methods";
+    }
+
+    // submit handler: shows results if not yet, else re-evaluates
+    function onSubmitQuiz() {
+        // check if any unanswered, but we allow (count as wrong)
+        const unansweredCount = userSelections.filter(sel => sel === null).length;
+        if (unansweredCount > 0 && !quizSubmitted) {
+            // subtle professional warning not intrusive
+            const warnMsg = document.createElement('div');
+            warnMsg.style.position = 'fixed';
+            warnMsg.style.bottom = '20px';
+            warnMsg.style.left = '20px';
+            warnMsg.style.right = '20px';
+            warnMsg.style.maxWidth = '360px';
+            warnMsg.style.background = '#fff3e0';
+            warnMsg.style.borderLeft = '4px solid #e68a2e';
+            warnMsg.style.padding = '12px 18px';
+            warnMsg.style.borderRadius = '16px';
+            warnMsg.style.fontSize = '0.85rem';
+            warnMsg.style.boxShadow = '0 8px 18px rgba(0,0,0,0.05)';
+            warnMsg.style.zIndex = '999';
+            warnMsg.innerText = `⚠️ ${unansweredCount} question(s) left unanswered. They will be marked incorrect. You can review before final submission.`;
+            document.body.appendChild(warnMsg);
+            setTimeout(() => { warnMsg.style.opacity = '0'; setTimeout(() => warnMsg.remove(), 600); }, 2800);
+        }
+        displayResults();
+    }
+
+    // reset & re-render clean
+    function handleReset() {
+        resetQuiz();
+        // Also ensure if results were open, close them.
+        const resultsPanel = document.getElementById('resultsPanel');
+        if (resultsPanel) resultsPanel.style.display = 'none';
+        quizSubmitted = false;
+        // scroll top gentle
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Simple XSS escape helper
+    function escapeHtml(str) {
+        if (!str) return '';
+        return str.replace(/[&<>]/g, function(m) {
+            if (m === '&') return '&amp;';
+            if (m === '<') return '&lt;';
+            if (m === '>') return '&gt;';
+            return m;
+        }).replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, function(c) {
+            return c;
+        });
+    }
+
+    // Initialize event listeners after DOM ready
+    document.addEventListener('DOMContentLoaded', () => {
+        renderQuestions();
+        const submitBtn = document.getElementById('submitQuizBtn');
+        const resetBtn = document.getElementById('resetQuizBtn');
+        if (submitBtn) submitBtn.addEventListener('click', onSubmitQuiz);
+        if (resetBtn) resetBtn.addEventListener('click', handleReset);
+        // preserve selections on radio re-render: already handled, but we also reattach any dynamic re-renders? reset does re-render.
+        // Ensure subtle auto-save if needed, already radio changes update userSelections array.
+    });
+</script>
+</body>
+</html>

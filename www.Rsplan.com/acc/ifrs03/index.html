@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#2C5F2D">
+  <meta name="description" content="IFRSplain - Master IFRS 10 (Consolidated Financial Statements) and IFRS 3 (Business Combinations) with extremely detailed level-based tutorials. Every term defined before examples, answers discussed separately. No journal entries – pure conceptual mastery.">
+  <title>IFRSplain | IFRS 10 & IFRS 3 Deep Conceptual Hub</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #F7F6F2;
+      color: #1F2A3A;
+      scroll-behavior: smooth;
+      line-height: 1.65;
+    }
+    :root {
+      --primary-dark: #2C5F2D;
+      --primary-light: #97BC62;
+      --accent-gold: #D4AF37;
+      --white: #FFFFFF;
+      --off-white: #FEFCF5;
+      --gray-bg: #F0F2F5;
+      --shadow-sm: 0 12px 30px rgba(0, 0, 0, 0.05);
+      --text-muted: #4A5A6E;
+    }
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 28px; }
+    .navbar {
+      background: var(--white);
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.03);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 2px solid var(--primary-light);
+    }
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      padding: 1rem 28px;
+      max-width: 1320px;
+      margin: 0 auto;
+    }
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--primary-dark) 0%, #3b7a3c 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .logo span { color: var(--accent-gold); background: none; font-weight: 800; }
+    .nav-links { display: flex; gap: 2.2rem; list-style: none; }
+    .nav-links a { text-decoration: none; font-weight: 600; color: #1F2A3A; transition: 0.2s; }
+    .nav-links a:hover { color: var(--primary-dark); }
+    .hamburger { display: none; font-size: 1.8rem; cursor: pointer; background: none; border: none; color: var(--primary-dark); }
+    .btn-primary {
+      background: var(--primary-dark);
+      color: white;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 40px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.25s;
+      display: inline-block;
+      text-decoration: none;
+    }
+    .btn-primary:hover { background: #1e421f; transform: translateY(-2px); }
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--primary-light);
+      color: var(--primary-dark);
+      padding: 10px 24px;
+      border-radius: 40px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.2s;
+      display: inline-block;
+      text-decoration: none;
+    }
+    .btn-outline:hover { background: var(--primary-light); color: white; }
+    section { padding: 80px 0; }
+    .section-title {
+      text-align: center;
+      font-size: 2.3rem;
+      font-weight: 800;
+      color: var(--primary-dark);
+      position: relative;
+    }
+    .section-title:after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 4px;
+      background: var(--accent-gold);
+      margin: 14px auto 0;
+      border-radius: 4px;
+    }
+    .section-sub { text-align: center; max-width: 680px; margin: 0 auto 3rem auto; color: var(--text-muted); }
+    .level-selector { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+    .level-btn {
+      background: white;
+      border: 2px solid var(--primary-light);
+      padding: 12px 28px;
+      border-radius: 60px;
+      font-weight: 700;
+      color: var(--primary-dark);
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .level-btn.active { background: var(--primary-dark); color: white; border-color: var(--primary-dark); box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+    .learning-panel {
+      background: var(--white);
+      border-radius: 48px;
+      padding: 2rem;
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 2rem;
+      border: 1px solid #e6e9f0;
+    }
+    .study-notes {
+      background: var(--off-white);
+      border-radius: 32px;
+      padding: 1.8rem;
+      margin-bottom: 2rem;
+      border-left: 5px solid var(--primary-light);
+    }
+    .detailed-explanations {
+      background: var(--gray-bg);
+      border-radius: 32px;
+      padding: 1.8rem;
+      border-left: 5px solid var(--primary-dark);
+    }
+    .detailed-explanations h4 { color: var(--primary-dark); margin-top: 1.5rem; margin-bottom: 1rem; font-size: 1.3rem; }
+    .detailed-explanations p, .detailed-explanations li { margin-bottom: 1rem; line-height: 1.7; }
+    .pdf-actions { 
+      display: flex; 
+      gap: 1rem; 
+      justify-content: flex-end; 
+      margin-top: 1rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .pdf-note {
+      background: #eef2e0;
+      padding: 8px 16px;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      color: var(--primary-dark);
+      font-weight: 500;
+      margin-right: auto;
+    }
+    .pdf-note i { margin-right: 6px; }
+    .disclaimer-banner {
+      background: #eef2f5;
+      border-left: 6px solid var(--primary-light);
+      padding: 1rem 1.5rem;
+      border-radius: 20px;
+      margin: 1rem 0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      font-size: 0.95rem;
+    }
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 2rem; margin-top: 2rem; }
+    .service-card { background: var(--white); border-radius: 32px; padding: 2rem; text-align: center; border: 1px solid #e2e8f0; transition: 0.2s; }
+    .service-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-sm); }
+    .service-icon { font-size: 2.8rem; color: var(--primary-dark); margin-bottom: 1.2rem; }
+    .contact-wrapper { display: flex; gap: 2rem; flex-wrap: wrap; background: var(--off-white); border-radius: 48px; padding: 2rem; }
+    .gold-icon { color: var(--accent-gold); }
+    .quiz-link-container {
+      margin-top: 2rem;
+      text-align: center;
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; flex-direction: column; width: 100%; background: white; padding: 1.5rem; border-radius: 32px; margin-top: 1rem; }
+      .nav-links.show { display: flex; }
+      .hamburger { display: block; }
+      .section-title { font-size: 1.9rem; }
+      .pdf-actions { flex-direction: column; align-items: stretch; }
+      .pdf-note { margin-right: 0; margin-bottom: 10px; text-align: center; }
+    }
+    @media (min-width: 769px) { .nav-links { display: flex !important; } .hamburger { display: none; } }
+    footer { background: var(--primary-dark); color: #e2f0e2; padding: 2rem 0; text-align: center; }
+    .footer-col { display: flex; justify-content: space-between; flex-wrap: wrap; align-items: center; gap: 1rem; }
+    .socials i { font-size: 1.5rem; margin: 0 0.6rem; color: var(--primary-light); transition: 0.2s; }
+    .socials i:hover { color: white; transform: scale(1.05); }
+    .original-credit { margin-top: 1rem; font-size: 0.8rem; opacity: 0.8; border-top: 1px solid var(--primary-light); padding-top: 1rem; }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="nav-container">
+    <div class="logo">IFRS<span>plain</span></div>
+    <button class="hamburger" id="hamburgerBtn"><i class="fas fa-bars"></i></button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#ifrs-hub">IFRS 10 & 3 Hub</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+  <section id="home" style="padding: 60px 0 40px; background: #fafaf7;">
+    <div class="container" style="display: flex; gap: 2rem; flex-wrap: wrap; align-items: center;">
+      <div style="flex:1">
+        <h1 style="font-size: 3rem; font-weight: 800; color: var(--primary-dark);">Master <span style="color: var(--accent-gold);">IFRS 10 & IFRS 3</span><br>Consolidation & Business Combinations</h1>
+        <p style="font-size: 1.1rem; margin: 1rem 0;">Extremely detailed conceptual explanations. Every term is fully defined before any example. Examples are presented separately, and answers are discussed only after all terms are explained. No journal entries – pure conceptual mastery of group accounting, control, goodwill, non‑controlling interests, and consolidation mechanics.</p>
+        <div class="disclaimer-banner">
+          <i class="fas fa-graduation-cap"></i>
+          <span><strong>Disclaimer:</strong> I am a <strong>final year Accounting student</strong> offering tutoring based on academic knowledge. This module provides in‑depth understanding of IFRS 10 (Consolidated Financial Statements) and IFRS 3 (Business Combinations).</span>
+        </div>
+      </div>
+      <div style="flex:0.7; text-align: center;"><i class="fas fa-chart-line" style="font-size: 7rem; color: var(--primary-light); opacity: 0.8;"></i></div>
+    </div>
+  </section>
+
+  <section id="ifrs-hub" style="padding-top: 40px;">
+    <div class="container">
+      <h2 class="section-title">📘 IFRS 10 & IFRS 3 – Deep Conceptual Mastery</h2>
+      <p class="section-sub">Choose your learning level. Each level provides exhaustive term definitions, fully worked examples, and answer discussions after the examples. No journal entries – only deep understanding of control, acquisition method, goodwill, non‑controlling interests, and consolidation adjustments.</p>
+      <div class="level-selector">
+        <button class="level-btn" data-level="beginner">🌱 Beginner</button>
+        <button class="level-btn active" data-level="intermediate">📚 Intermediate</button>
+        <button class="level-btn" data-level="advanced">🚀 Advanced</button>
+      </div>
+      <div class="learning-panel">
+        <div id="studyNotesContainer" class="study-notes"><h3 style="color: var(--primary-dark);"><i class="fas fa-book-open"></i> Study Notes (Summary)</h3><div id="studyNotesContent">Loading...</div></div>
+        <div id="detailedExplanationsContainer" class="detailed-explanations"><h3 style="color: var(--primary-dark);"><i class="fas fa-chalkboard-teacher"></i> Detailed Explanations & Worked Examples</h3><div id="explanationsContent">Select a level...</div></div>
+        <div class="pdf-actions">
+          <div class="pdf-note"><i class="fas fa-download"></i> <strong>Download PDF for easier understanding</strong> – get all notes & examples in one printable file</div>
+          <button id="downloadPdfBtn" class="btn-outline"><i class="fas fa-file-pdf"></i> Download PDF</button>
+          <button id="printPdfBtn" class="btn-primary"><i class="fas fa-print"></i> Print / Save as PDF</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services"><div class="container"><h2 class="section-title">Accounting & Auditing Expertise</h2><div class="services-grid"><div class="service-card"><i class="fas fa-chart-line service-icon"></i><h3>IFRS 10 Consolidation</h3><p>Control assessment, group accounting, NCI, elimination of intragroup transactions.</p></div><div class="service-card"><i class="fas fa-puzzle-piece service-icon"></i><h3>IFRS 3 Business Combinations</h3><p>Acquisition method, goodwill, fair value adjustments, bargain purchase.</p></div><div class="service-card"><i class="fas fa-calculator service-icon"></i><h3>Group Financial Statements</h3><p>Intragroup eliminations, uniform policies, reporting date alignment.</p></div></div></div></section>
+
+  <section id="contact"><div class="container"><h2 class="section-title">Let’s Master Group Accounting</h2><div class="contact-wrapper"><div class="contact-info" style="flex:1"><h3><i class="fas fa-chalkboard-user gold-icon"></i> Get 1-on-1 guidance</h3><p>Reach out for personalised IFRS 10 & IFRS 3 tutoring. I will respond within 24 hours.</p><p><i class="fas fa-envelope"></i> tutor@ifrsplain.com</p><p><i class="fas fa-phone-alt"></i> +27 76 123 4567</p></div><div class="contact-form" style="flex:1.5"><form id="contactForm"><input type="text" id="fullName" placeholder="Full name *" style="width:100%; margin-bottom:1rem; padding:12px;"><input type="email" id="emailAddr" placeholder="Email *" style="width:100%; margin-bottom:1rem; padding:12px;"><textarea rows="3" id="messageContent" placeholder="Your consolidation questions..." style="width:100%; padding:12px;"></textarea><button type="submit" class="btn-primary" style="margin-top:1rem;">Send Request</button><div id="formStatusMsg"></div></form></div></div></div></section>
+</main>
+<footer>
+  <div class="container footer-col">
+    <div>© <span id="currentYear"></span> IFRSplain — IFRS 10 & IFRS 3 Mastery | Final Year Student Led</div>
+    <div class="socials"><i class="fab fa-instagram"></i><i class="fab fa-twitter"></i><i class="fab fa-facebook"></i></div>
+  </div>
+  <div class="container original-credit">
+    <small>Originally developed by Siphiwe Investment – continuing excellence in accounting education.</small>
+  </div>
+</footer>
+
+<script>
+  // ------------------------------------------------------------------
+  // IFRS 10 & IFRS 3 – EXTREMELY DETAILED CONTENT (Conceptual, no journal entries)
+  // Every term defined before use, examples separate, answers discussed after terms.
+  // Added quiz link at the end of each level (consistent design)
+  // ------------------------------------------------------------------
+  const quizLinkHtml = `<div class="quiz-link-container"><a href="#" class="btn-outline"><i class="fas fa-question-circle"></i> Test Your Knowledge – Take the Quiz →</a></div>`;
+
+  const contentLibrary = {
+    beginner: {
+      notes: `<h4>🌱 Beginner Level – Core Definitions and Principles</h4>
+              <p><strong>IFRS 10 – Consolidated Financial Statements</strong> requires a parent entity to present consolidated financial statements. A <strong>parent</strong> is an entity that controls one or more other entities. <strong>Control</strong> is defined as: an investor controls an investee when the investor is exposed, or has rights, to variable returns from its involvement with the investee and has the ability to affect those returns through its power over the investee. This definition has three elements:</p>
+              <ol>
+                <li><strong>Power</strong> – existing rights that give the ability to direct the relevant activities (e.g., voting rights, board representation, contractual arrangements).</li>
+                <li><strong>Exposure to variable returns</strong> – returns that can be positive, negative, or both (e.g., dividends, fees, economies of scale, losses).</li>
+                <li><strong>Link between power and returns</strong> – the ability to use power to influence the amount of returns.</li>
+              </ol>
+              <p><strong>IFRS 3 – Business Combinations</strong> applies when an acquirer obtains control of a business. A <strong>business</strong> is an integrated set of activities and assets that is capable of being conducted and managed for the purpose of providing returns (e.g., a subsidiary, a division). The <strong>acquisition method</strong> involves: identifying the acquirer, determining the acquisition date, recognising and measuring identifiable assets acquired and liabilities assumed at fair value, recognising goodwill or a gain from a bargain purchase.</p>
+              <p><strong>Goodwill</strong> is the excess of (a) the consideration transferred, plus the amount of any non‑controlling interest, plus the fair value of any previously held equity interest, over (b) the net identifiable assets acquired. If (b) exceeds (a), a bargain purchase gain is recognised immediately in profit or loss.</p>`,
+      explanations: `<h4>📖 Beginner – Full Explanations of Terms, Then Example, Then Answer Discussion</h4>
+                     <p><strong>Step 1 – Detailed definition of all terms used in the example:</strong><br>
+                     - <strong>Consideration transferred:</strong> The amount paid by the acquirer to obtain control. It can be cash, shares, or contingent consideration. In our example, it is cash.<br>
+                     - <strong>Identifiable net assets:</strong> The fair value of assets (like property, inventory, receivables) minus liabilities (like loans, provisions) that can be separately recognised. They exclude goodwill.<br>
+                     - <strong>Fair value:</strong> The price that would be received to sell an asset or paid to transfer a liability in an orderly transaction between market participants at the measurement date.<br>
+                     - <strong>Goodwill:</strong> An intangible asset representing future economic benefits from assets that are not individually identified – such as synergies, assembled workforce, loyal customer base, and the going concern value.<br>
+                     - <strong>Non‑controlling interest (NCI):</strong> For a 100% acquisition, NCI is zero because the parent owns everything.</p>
+                     <p><strong>Step 2 – Present the example clearly (no answer yet):</strong><br>
+                     Example: Parent Company acquires 100% of Subsidiary Company for cash consideration of R1,000,000. At the acquisition date, the identifiable net assets of Subsidiary have a fair value of R800,000. There is no previously held interest, and the parent owns 100% (no NCI).</p>
+                     <p><strong>Step 3 – Discuss the answer using the terms already explained:</strong><br>
+                     Goodwill = Consideration transferred (R1,000,000) + NCI (R0) + fair value of previously held interest (R0) – fair value of identifiable net assets (R800,000) = R200,000. This R200,000 represents the premium the parent paid over the net worth of the subsidiary. It will be recognised as an intangible asset in the consolidated statement of financial position and will never be amortised; instead, it is tested for impairment at least annually. If the calculation had resulted in a negative figure (e.g., net assets R1,100,000), the difference of R100,000 would be a bargain purchase gain, recognised immediately in profit or loss – this is rare but can happen in distressed sales.</p>
+                     <p><strong>Additional conceptual discussion:</strong> The acquisition method ensures that all assets and liabilities of the subsidiary are measured at fair value at the acquisition date. This provides relevant information to users of the financial statements. Goodwill is not amortised under IFRS because its useful life is indefinite and cannot be reliably estimated. Instead, impairment testing compares the recoverable amount of the cash‑generating unit (including goodwill) to its carrying amount. Any impairment loss first reduces goodwill and then other assets. This approach reflects that goodwill may lose value over time, but the timing is uncertain.</p>
+                     ${quizLinkHtml}`
+    },
+    intermediate: {
+      notes: `<h4>📘 Intermediate Level – Non‑controlling Interests, Fair Value Adjustments, Intragroup Eliminations</h4>
+              <p><strong>Non‑controlling interest (NCI)</strong> represents the equity in a subsidiary not owned by the parent. IFRS 3 allows two measurement methods: the <strong>full goodwill method</strong> (measure NCI at fair value, including its share of goodwill) and the <strong>partial goodwill method</strong> (measure NCI as its proportionate share of the subsidiary’s identifiable net assets, excluding any goodwill).</p>
+              <p><strong>Fair value adjustments</strong> arise when the carrying amount of a subsidiary’s asset or liability (per its own books) differs from its fair value at the acquisition date. These adjustments affect the consolidated financial statements, often increasing depreciation, cost of sales, or other expenses.</p>
+              <p><strong>Intragroup transactions</strong> (sales, loans, dividends, etc.) must be eliminated in full because the group is a single economic entity. Unrealised profits on intragroup sales of inventory are eliminated, and deferred tax may be recognised on the elimination.</p>`,
+      explanations: `<h4>📖 Intermediate – Detailed Term Explanations, Then Example, Then Answer Discussion</h4>
+                     <p><strong>Part A – Explanation of all key terms used in the example:</strong><br>
+                     - <strong>Non‑controlling interest (NCI):</strong> For an 80% acquisition, NCI is 20%. Under the full goodwill method, NCI is measured at its fair value, which includes a proportional share of the goodwill. This increases the NCI carrying amount on the consolidated balance sheet compared to the partial goodwill method. Under the partial goodwill method, NCI is simply 20% of the identifiable net assets (no NCI goodwill).<br>
+                     - <strong>Fair value uplift (depreciable asset):</strong> If a subsidiary’s building has a fair value R500,000 above its book value, and the remaining useful life is 10 years, the group will recognise an additional R50,000 depreciation each year. This reduces the subsidiary’s profit and is allocated between the parent and NCI based on ownership percentages.<br>
+                     - <strong>Intragroup sale of inventory:</strong> When the parent sells inventory to the subsidiary, any profit on that sale is unrealised from the group’s perspective because the inventory is still within the group. The elimination reduces consolidated revenue, cost of sales, and inventory. If the subsidiary had been the seller, the elimination would also affect NCI.</p>
+                     <p><strong>Part B – The complete example (stated clearly before any answer):</strong><br>
+                     Parent acquires 80% of Subsidiary for R1,200,000 cash. Fair value of Subsidiary’s identifiable net assets is R1,000,000. Fair value of the 20% NCI is R250,000. Subsidiary’s building (remaining life 10 years) has a fair value R500,000 above its book value. During the year, Parent sold inventory to Subsidiary for R100,000 (cost to Parent R70,000); the inventory is still held by Subsidiary at year end. Subsidiary’s profit for the year after acquisition is R200,000 (before any fair value adjustments).</p>
+                     <p><strong>Part C – Answer discussion (step by step, using the terms already explained):</strong><br>
+                     <strong>1. Goodwill calculation (full goodwill method):</strong> Consideration R1,200,000 + NCI fair value R250,000 – net assets R1,000,000 = Goodwill R450,000. This goodwill is allocated: parent’s share 80% = R360,000; NCI’s share 20% = R90,000. The full goodwill method increases NCI on the balance sheet to R340,000 (R250,000 fair value of NCI + R90,000 NCI goodwill).<br>
+                     <strong>2. Fair value adjustment – building:</strong> Additional depreciation = R500,000 / 10 = R50,000 per year. This reduces the subsidiary’s profit from R200,000 to R150,000. The parent’s share of this reduction is R40,000 (80%), and NCI’s share is R10,000 (20%). Therefore, the profit attributable to the parent from the subsidiary becomes R120,000 (80% of R150,000) and NCI gets R30,000 (20% of R150,000).<br>
+                     <strong>3. Intragroup inventory elimination:</strong> The sale of R100,000 from parent to subsidiary created an unrealised profit of R30,000 (R100,000 – R70,000). From the group’s perspective, no sale has occurred to an external party, so this profit must be eliminated. Because the parent was the seller, the entire R30,000 reduction affects the parent’s profit (not NCI). The consolidated revenue decreases by R100,000, consolidated cost of sales decreases by R70,000, and consolidated inventory decreases by R30,000 (back to the original cost of R70,000). The parent’s separate profit is reduced by R30,000.<br>
+                     <strong>4. Overall effect on consolidated profit:</strong> The subsidiary’s adjusted profit after fair value depreciation is R150,000. The parent’s profit from its own operations (not specified) will be reduced by the R30,000 unrealised profit. In the consolidated statement of profit or loss, the line items are adjusted accordingly. The total profit for the year is then split between “profit attributable to owners of the parent” and “profit attributable to non‑controlling interest”. NCI’s share is R30,000 (20% of R150,000 after fair value adjustment) – the intragroup elimination does not affect NCI because the sale was from parent to subsidiary.</p>
+                     <p><strong>Extended conceptual note:</strong> Fair value adjustments and intragroup eliminations are essential to present the group as a single economic entity. Without these, the financial statements would be misleading (overstating assets, revenue, and profits). The choice between full goodwill and partial goodwill methods can significantly affect the carrying amount of NCI and the goodwill impairment calculation. Under the full goodwill method, any impairment of goodwill is allocated between the parent and NCI, whereas under the partial goodwill method, impairment is only recognised for the parent’s share. This can lead to different equity and profit figures.</p>
+                     ${quizLinkHtml}`
+    },
+    advanced: {
+      notes: `<h4>🚀 Advanced Level – Step Acquisitions, Loss of Control, Contingent Consideration, Complex Structures</h4>
+              <p><strong>Step acquisition</strong> occurs when an entity obtains control of an investee in stages, having previously held an equity interest. The previously held interest is remeasured to fair value at the acquisition date, and any gain or loss is recognised in profit or loss. This fair value becomes part of the total consideration for goodwill.</p>
+              <p><strong>Loss of control</strong> happens when a parent ceases to control a subsidiary. The parent derecognises all assets and liabilities of the subsidiary, recognises any retained interest at fair value, and recognises a gain or loss in profit or loss. The retained interest is subsequently accounted for using the equity method (if significant influence) or as a financial asset (if no influence).</p>
+              <p><strong>Contingent consideration</strong> is an obligation to transfer additional assets or equity if specified future events occur. It is measured at fair value at the acquisition date; subsequent changes (if classified as a liability) are recognised in profit or loss. If classified as equity, subsequent changes are not recognised.</p>
+              <p><strong>Complex group structures</strong> involve multiple layers of subsidiaries and indirect non‑controlling interests, requiring careful calculation of effective ownership percentages and step‑by‑step consolidation.</p>`,
+      explanations: `<h4>📖 Advanced – Full Term Definitions, Then Example, Then Answer Discussion</h4>
+                     <p><strong>Part A – Detailed explanation of all terms used in advanced examples:</strong><br>
+                     - <strong>Step acquisition:</strong> An entity initially holds a 30% interest in another entity, classified as an associate under IAS 28. Later, it acquires an additional 40% interest, obtaining control. IFRS 3 requires the previously held 30% to be remeasured to fair value at the acquisition date. The resulting gain or loss (difference between fair value and previous carrying amount) is recognised in profit or loss. This fair value then becomes part of the total consideration for goodwill.<br>
+                     - <strong>Loss of control:</strong> If a parent sells a 60% stake in a subsidiary and retains a 20% interest, control is lost. The parent stops consolidating the subsidiary. The retained 20% is measured at its fair value at the date control is lost. The difference between (a) the cash proceeds plus the fair value of the retained interest and (b) the carrying amount of the subsidiary’s net assets (including goodwill) is recognised as a gain or loss in profit or loss. The retained interest is then accounted for as an associate (if significant influence exists) or as a financial instrument under IFRS 9.<br>
+                     - <strong>Contingent consideration:</strong> Often used in mergers to bridge valuation gaps. Example: acquirer agrees to pay an additional amount if the target’s earnings exceed a certain threshold. At acquisition, the best estimate of fair value is recorded as part of the consideration. If the contingency is resolved and the payment increases, the change is recognised in profit or loss for a liability‑classified contingent consideration, or in equity for equity‑classified.<br>
+                     - <strong>Indirect NCI:</strong> When Parent owns 80% of Subsidiary A, and Subsidiary A owns 70% of Subsidiary B, Parent’s effective interest in Subsidiary B is 56% (80% × 70%). The remaining 44% is NCI, but part of that NCI is indirect (held by A’s NCI) and part is direct (external shareholders of B). Consolidation must be performed stepwise: first consolidate B into A, then consolidate A into Parent.</p>
+                     <p><strong>Part B – Comprehensive advanced examples (presented fully before answer):</strong><br>
+                     <strong>Example 1 (Step acquisition):</strong> Entity X holds 30% of Entity Y, with a carrying amount of R300,000. The fair value of this 30% interest at the acquisition date is R400,000. X then buys an additional 40% of Y for R600,000 cash, obtaining control. The fair value of Y’s identifiable net assets at that date is R800,000. The fair value of the remaining 30% NCI is R300,000.<br>
+                     <strong>Example 2 (Loss of control):</strong> Parent controls a subsidiary with net assets (including goodwill) carrying amount of R1,000,000. Parent sells 60% of its interest for cash of R700,000 and retains a 20% interest. The fair value of the retained 20% interest is R250,000.<br>
+                     <strong>Example 3 (Contingent consideration):</strong> Acquirer pays R1,000,000 cash plus contingent consideration with a fair value of R150,000 at acquisition date. One year later, the earnings target is met, and the acquirer pays an additional R50,000. The liability was classified as a financial liability measured at fair value through profit or loss.</p>
+                     <p><strong>Part C – Answer discussion (using the terms already explained):</strong><br>
+                     <strong>For Example 1 (step acquisition):</strong> Total consideration for goodwill calculation = fair value of previously held interest (R400,000) + new consideration (R600,000) = R1,000,000. Goodwill = R1,000,000 + NCI fair value (R300,000) – net assets (R800,000) = R500,000. The remeasurement gain of R100,000 (R400,000 – R300,000) is recognised in profit or loss. This gain represents the increase in value of the original 30% stake that occurred before control was obtained. It is not recycled through other comprehensive income; it goes directly to P&L under IFRS 3.<br>
+                     <strong>For Example 2 (loss of control):</strong> Total proceeds = cash (R700,000) + fair value of retained interest (R250,000) = R950,000. Carrying amount of subsidiary’s net assets = R1,000,000. Loss on disposal = R950,000 – R1,000,000 = –R50,000 (a loss). This loss is recognised in profit or loss. The retained 20% interest is not consolidated; it will be accounted for as an associate if significant influence exists (usually 20% or more is presumed) or as a financial asset under IFRS 9. The group no longer includes the subsidiary’s assets and liabilities in its consolidated statement of financial position.<br>
+                     <strong>For Example 3 (contingent consideration):</strong> At acquisition date, goodwill includes R150,000 (the fair value of the contingent consideration). One year later, the liability is increased to R200,000. The additional R50,000 is not adjusted to goodwill; instead, it is recognised as an expense in profit or loss (typically within finance costs or administrative expenses). This treatment reflects that the contingent consideration is a liability measured at fair value, and changes after the measurement period (generally up to one year for such earn‑out arrangements) are charged to P&L. If the contingent consideration had been classified as equity, subsequent changes would not be recognised at all – the equity amount would remain as initially recorded.</p>
+                     <p><strong>Advanced conceptual discussion – complex groups:</strong> In a group with indirect NCI, the key is to compute effective ownership percentages and allocate profits and losses accordingly. For example, Parent owns 80% of Sub A, and Sub A owns 70% of Sub B. Parent’s effective interest in Sub B is 56% (80% × 70%). The NCI in Sub B is 44% (100% – 56%). This 44% consists of a direct NCI (the 30% of Sub B not owned by Sub A) and an indirect NCI (the 20% NCI in Sub A, which has a 70% interest in Sub B: 20% × 70% = 14%). So total NCI = 30% direct + 14% indirect = 44%. Consolidation starts from the bottom: first, Sub B is consolidated into Sub A, creating NCI in Sub B within Sub A’s consolidated trial balance. Then Sub A’s consolidated numbers are consolidated into Parent, with a second layer of NCI. Goodwill is calculated separately for each acquisition (the acquisition of Sub A by Parent, and the acquisition of Sub B by Sub A). Step acquisitions and disposals add further complexity, but the principles remain: use fair value at the date control is obtained or lost, and recognise any resulting gain/loss in profit or loss. Proper tracking of NCI movements is essential.</p>
+                     ${quizLinkHtml}`
+    }
+  };
+
+  let currentLevel = "intermediate";
+  function renderContent(level) {
+    const data = contentLibrary[level];
+    if (!data) return;
+    document.getElementById("studyNotesContent").innerHTML = data.notes;
+    document.getElementById("explanationsContent").innerHTML = data.explanations;
+  }
+  function downloadCombinedPDF() {
+    const levelTitle = currentLevel.toUpperCase();
+    const notesDiv = document.getElementById("studyNotesContent").cloneNode(true);
+    const explanationsDiv = document.getElementById("explanationsContent").cloneNode(true);
+    const printWindow = window.open('', '_blank');
+    printWindow.document.write(`
+      <html><head><title>IFRS10_3_${currentLevel}_Deep</title>
+      <style>body{font-family:'Inter',sans-serif; padding:2rem; max-width:1000px; margin:0 auto; background:#F7F6F2;} h2{color:#2C5F2D;} .btn-outline{background:transparent; border:2px solid #97BC62; color:#2C5F2D; padding:10px 24px; border-radius:40px; text-decoration:none; display:inline-block;}</style>
+      </head><body><h2>IFRSplain - IFRS 10 & IFRS 3: ${levelTitle} Level (Deep Conceptual Explanations)</h2>
+      <div class="study-notes"><h3>Study Notes</h3>${notesDiv.innerHTML}</div>
+      <div class="detailed-explanations"><h3>Detailed Explanations & Worked Examples</h3>${explanationsDiv.innerHTML}</div>
+      <p><em>Generated from IFRSplain | Final year accounting student tutor | No journal entries, pure conceptual mastery. All terms defined before examples; answers discussed separately.</em></p></body></html>`);
+    printWindow.document.close();
+    printWindow.print();
+  }
+  document.querySelectorAll(".level-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      document.querySelectorAll(".level-btn").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      currentLevel = btn.getAttribute("data-level");
+      renderContent(currentLevel);
+    });
+  });
+  document.getElementById("downloadPdfBtn").addEventListener("click", downloadCombinedPDF);
+  document.getElementById("printPdfBtn").addEventListener("click", downloadCombinedPDF);
+  renderContent("intermediate");
+
+  // Mobile navigation & contact form
+  const hamburger = document.getElementById('hamburgerBtn');
+  const navLinks = document.getElementById('navLinks');
+  if (hamburger && navLinks) {
+    hamburger.addEventListener('click', () => navLinks.classList.toggle('show'));
+    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => navLinks.classList.remove('show')));
+  }
+  document.getElementById('currentYear').innerText = new Date().getFullYear();
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const target = this.getAttribute('href');
+      if (target === "#" || target === "") return;
+      const targetEl = document.querySelector(target);
+      if (targetEl) { e.preventDefault(); targetEl.scrollIntoView({ behavior: 'smooth' }); }
+    });
+  });
+  const contactForm = document.getElementById('contactForm');
+  if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('fullName')?.value || '';
+      const email = document.getElementById('emailAddr')?.value || '';
+      const msg = document.getElementById('messageContent')?.value || '';
+      const statusDiv = document.getElementById('formStatusMsg');
+      if (!name || !email || !msg) { statusDiv.innerHTML = '<span style="color:#b91c1c;">Please fill all fields</span>'; return; }
+      statusDiv.innerHTML = '<span style="color:#15803d;">✅ Request sent! Tutor will reach out within 24 hours.</span>';
+      contactForm.reset();
+      setTimeout(() => statusDiv.innerHTML = '', 4000);
+    });
+  }
+</script>
+</body>
+</html>
